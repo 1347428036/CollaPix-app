@@ -45,10 +45,14 @@ export const useLoginUserStore = defineStore('loginUser', () => {
     return userInfoRef.value.id !== undefined
   }
 
-  async function logout() {
-    await userController.userLogout()
+  function clearUserInfoCache() {
     userInfoRef.value = UNLOGIN_USER
     localStorage.removeItem(USER_INFO_KEY)
+  }
+
+  async function logout() {
+    await userController.userLogout()
+    clearUserInfoCache()
   }
 
   function loadUserFromStorage(): LoginUserVo {
@@ -60,5 +64,5 @@ export const useLoginUserStore = defineStore('loginUser', () => {
     return UNLOGIN_USER
   }
 
-  return { fetchLoginUser, setLoginUser, getLoginUser, isLogin, logout }
+  return { fetchLoginUser, setLoginUser, getLoginUser, isLogin, clearUserInfoCache, logout }
 })

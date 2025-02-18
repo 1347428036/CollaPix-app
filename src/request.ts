@@ -33,7 +33,11 @@ httpSender.interceptors.response.use(
         !window.location.pathname.includes('/user/login') &&
         !window.location.pathname.includes('/user/register')
       ) {
-        await message.warning('请先登录')
+        // Delay initialization useLoginUserStore
+        const { useLoginUserStore } = await import('./stores/useLoginUserStore')
+        const useUserStore = useLoginUserStore()
+        useUserStore.clearUserInfoCache()
+        await message.warning('Please logn')
         window.location.href = `/user/login?redirect=${window.location.href}`
       }
     }
