@@ -4,9 +4,13 @@
       <a-layout-header class="header">
         <GlobalHeader />
       </a-layout-header>
-      <a-layout-content class="content">
-        <RouterView />
-      </a-layout-content>
+      <a-layout>
+        <GlobalSlider class="sider" />
+        <a-layout-content class="content">
+          <RouterView />
+        </a-layout-content>
+      </a-layout>
+
       <a-layout-footer class="footer"><span>CloudPicture</span></a-layout-footer>
     </a-layout>
   </div>
@@ -14,6 +18,7 @@
 
 <script setup lang="ts">
 import GlobalHeader from '@/components/GlobalHeader.vue'
+import GlobalSlider from '@/components/GlobalSider.vue'
 import { RouterView } from 'vue-router'
 </script>
 
@@ -24,14 +29,11 @@ import { RouterView } from 'vue-router'
 }
 #basicLayout .header {
   background-color: white;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  margin-bottom: 1px;
 }
 #basicLayout .content {
-  margin: 4.4rem 0 3.5rem 0;
-  padding: 1rem 2rem 5rem 2rem;
+  margin: 0 0 3.5rem 0;
+  padding: 1rem 2rem 1rem 2rem;
   background-color: #ffff;
 }
 #basicLayout .footer {
@@ -46,5 +48,17 @@ import { RouterView } from 'vue-router'
   align-items: center;
   justify-content: center;
   height: 3rem;
+  z-index: 100;
+}
+
+#basicLayout .sider {
+  background: #fff;
+  margin-top: 0;
+  border-right: 0.5px solid #eee;
+}
+
+#basicLayout :deep(.ant-menu-root) {
+  border-bottom: none !important;
+  border-inline-end: none !important;
 }
 </style>

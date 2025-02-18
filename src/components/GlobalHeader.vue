@@ -18,7 +18,7 @@
       /></a-col>
       <a-col flex="12rem">
         <div class="user-login-status">
-          <div v-if="userInfo.id">
+          <div v-if="loginUserStore.isLogin()">
             <a-dropdown placement="bottomRight" :arrow="{ pointAtCenter: false }">
               <a-space style="cursor: pointer">
                 {{ userInfo.userName }}
@@ -29,13 +29,10 @@
               <template #overlay>
                 <a-menu>
                   <a-menu-item>
-                    <a href="javascript:;" @click="doLogout">Logout</a>
+                    <router-link to="/space/my"><UserOutlined /> My Space</router-link>
                   </a-menu-item>
                   <a-menu-item>
-                    <a href="javascript:;">2nd menu item</a>
-                  </a-menu-item>
-                  <a-menu-item>
-                    <a href="javascript:;">3rd menu item</a>
+                    <a href="javascript:;" @click="doLogout"><LogoutOutlined /> Logout</a>
                   </a-menu-item>
                 </a-menu>
               </template>
@@ -50,14 +47,19 @@
 
 <script lang="ts" setup>
 import { computed, h, ref } from 'vue'
-import { HomeOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons-vue'
+import {
+  FileImageOutlined,
+  FolderOutlined,
+  HomeOutlined,
+  UserOutlined,
+  LogoutOutlined,
+} from '@ant-design/icons-vue'
 import type { MenuProps } from 'ant-design-vue'
 import { useRouter } from 'vue-router'
 import { useLoginUserStore } from '@/stores/useLoginUserStore'
 
 const loginUserStore = useLoginUserStore()
 const userInfo = computed(() => loginUserStore.getLoginUser())
-
 const defaultItems = ref<MenuProps['items']>([
   {
     key: '/',
@@ -66,46 +68,28 @@ const defaultItems = ref<MenuProps['items']>([
     title: 'Home',
   },
   {
+    key: '/picture/add',
+    icon: () => h(FileImageOutlined),
+    label: 'Create Picture',
+    title: 'Create Picture',
+  },
+  {
     key: '/admin/user-management',
     icon: () => h(UserOutlined),
     label: 'User Management',
     title: 'User Management',
   },
   {
-    key: '/sub1',
-    icon: () => h(SettingOutlined),
-    label: 'Navigation Three - Submenu',
-    title: 'Navigation Three - Submenu',
-    children: [
-      {
-        type: 'group',
-        label: 'Item 1',
-        children: [
-          {
-            label: 'Option 1',
-            key: 'setting:1',
-          },
-          {
-            label: 'Option 2',
-            key: 'setting:2',
-          },
-        ],
-      },
-      {
-        type: 'group',
-        label: 'Item 2',
-        children: [
-          {
-            label: 'Option 3',
-            key: 'setting:3',
-          },
-          {
-            label: 'Option 4',
-            key: 'setting:4',
-          },
-        ],
-      },
-    ],
+    key: '/admin/picture-management',
+    icon: () => h(FileImageOutlined),
+    label: 'Picture Management',
+    title: 'Picture Management',
+  },
+  {
+    key: '/admin/space-management',
+    icon: () => h(FolderOutlined),
+    label: 'Space Management',
+    title: 'Space Management',
   },
   {
     key: '/about',
