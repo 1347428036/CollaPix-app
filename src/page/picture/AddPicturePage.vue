@@ -15,6 +15,29 @@
         <UrlPictureUpload :picture="picture" :spaceId="spaceId" :onSuccess="onSuccess" />
       </a-tab-pane>
     </a-tabs>
+    <!-- Picture editing -->
+    <div v-if="picture.id" class="edit-bar">
+      <a-space>
+        <a-button :icon="h(EditOutlined)" @click="doEditPicture">Edit picture</a-button>
+        <a-button type="primary" ghost :icon="h(FullscreenOutlined)" @click="doImageOutPainting"
+          >AI Out-Painting</a-button
+        >
+      </a-space>
+      <ImageCropper
+        ref="imageCropperRef"
+        :imageUrl="picture?.url"
+        :picture="picture"
+        :space-id="spaceId"
+        :space="space"
+        @success="onCropSuccess"
+      />
+      <ImageOutPainting
+        ref="imageOutPaintingRef"
+        :picture="picture"
+        :space-id="spaceId"
+        @success="onOutPaintingSuccess"
+      />
+    </div>
 
     <a-form v-if="picture.id" layout="vertical" :model="pictureForm" @finish="handleSubmit">
       <a-form-item label="Name" name="name">
@@ -47,20 +70,25 @@
         />
       </a-form-item>
       <a-form-item>
-        <a-button type="primary" html-type="submit" style="width: 100%">Create</a-button>
+        <a-button type="primary" html-type="submit" style="width: 100%">{{
+          route.query?.id ? 'Update' : 'Create'
+        }}</a-button>
       </a-form-item>
     </a-form>
   </div>
 </template>
 
 <script lang="ts" setup>
-import type { PictureEditRequest, PictureTagCategory, PictureVo } from '@/api/api'
-import { pictureController } from '@/api/apiFactory'
+import type { PictureEditRequest, PictureTagCategory, PictureVo, SpaceVo } from '@/api/api'
+import { pictureController, spaceController } from '@/api/apiFactory'
 import PictureUpload from '@/components/PictureUpload.vue'
 import { message } from 'ant-design-vue'
-import { computed, onMounted, reactive, ref } from 'vue'
+import { computed, onMounted, reactive, ref, h, watchEffect } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import UrlPictureUpload from '@/components/UrlPictureUpload.vue'
+import ImageCropper from '@/components/ImageCropper.vue'
+import ImageOutPainting from '@/components/ImageOutPainting.vue'
+import { EditOutlined, FullscreenOutlined } from '@ant-design/icons-vue'
 
 const pictureForm = reactive<PictureEditRequest>({})
 
@@ -69,6 +97,9 @@ const router = useRouter()
 const route = useRoute()
 const uploadType = ref<'file' | 'url'>('file')
 const spaceId = computed(() => route.query?.spaceId as string)
+// Picture editing modal ref
+const imageCropperRef = ref()
+const imageOutPaintingRef = ref()
 
 const categoryOptions = ref<{ value: string; label: string }[]>([
   {
@@ -82,6 +113,22 @@ const tagOptions = ref<{ value: string; label: string }[]>([
     label: '',
   },
 ])
+const space = ref<SpaceVo>()
+
+// 获取空间信息
+const fetchSpace = async () => {
+  // 获取数据
+  if (spaceId.value) {
+    const res = await spaceController.getSpaceVoById(spaceId.value)
+    if (res) {
+      space.value = res as SpaceVo
+    }
+  }
+}
+
+watchEffect(() => {
+  fetchSpace()
+})
 
 onMounted(() => {
   getTagCategoryOptions()
@@ -149,11 +196,36 @@ const getOldPicture = async () => {
     }
   }
 }
+
+const doEditPicture = () => {
+  if (imageCropperRef.value) {
+    imageCropperRef.value.openModal()
+  }
+}
+
+const onCropSuccess = (newPicture: PictureVo) => {
+  picture.value = newPicture
+}
+
+const doImageOutPainting = () => {
+  if (imageOutPaintingRef.value) {
+    imageOutPaintingRef.value.openModal()
+  }
+}
+
+const onOutPaintingSuccess = (newPicture: PictureVo) => {
+  picture.value = newPicture
+}
 </script>
 
 <style scoped>
 #add-picture-page {
   max-width: 45rem;
   margin: 0 auto;
+}
+
+#add-picture-page .edit-bar {
+  text-align: center;
+  margin: 1rem 0;
 }
 </style>
