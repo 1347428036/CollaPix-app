@@ -51,6 +51,31 @@ export interface CommonResponseBoolean {
 /**
  * 
  * @export
+ * @interface CommonResponseCreateOutPaintingTaskResponse
+ */
+export interface CommonResponseCreateOutPaintingTaskResponse {
+    /**
+     * return status code
+     * @type {number}
+     * @memberof CommonResponseCreateOutPaintingTaskResponse
+     */
+    'code'?: number;
+    /**
+     * return data
+     * @type {CreateOutPaintingTaskResponse}
+     * @memberof CommonResponseCreateOutPaintingTaskResponse
+     */
+    'data'?: CreateOutPaintingTaskResponse;
+    /**
+     * return message
+     * @type {string}
+     * @memberof CommonResponseCreateOutPaintingTaskResponse
+     */
+    'message'?: string;
+}
+/**
+ * 
+ * @export
  * @interface CommonResponseInteger
  */
 export interface CommonResponseInteger {
@@ -126,6 +151,31 @@ export interface CommonResponseListPictureVo {
 /**
  * 
  * @export
+ * @interface CommonResponseListSpaceCategoryAnalyzeResponse
+ */
+export interface CommonResponseListSpaceCategoryAnalyzeResponse {
+    /**
+     * return status code
+     * @type {number}
+     * @memberof CommonResponseListSpaceCategoryAnalyzeResponse
+     */
+    'code'?: number;
+    /**
+     * return data
+     * @type {Array<SpaceCategoryAnalyzeResponse>}
+     * @memberof CommonResponseListSpaceCategoryAnalyzeResponse
+     */
+    'data'?: Array<SpaceCategoryAnalyzeResponse>;
+    /**
+     * return message
+     * @type {string}
+     * @memberof CommonResponseListSpaceCategoryAnalyzeResponse
+     */
+    'message'?: string;
+}
+/**
+ * 
+ * @export
  * @interface CommonResponseListSpaceLevel
  */
 export interface CommonResponseListSpaceLevel {
@@ -145,6 +195,131 @@ export interface CommonResponseListSpaceLevel {
      * return message
      * @type {string}
      * @memberof CommonResponseListSpaceLevel
+     */
+    'message'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface CommonResponseListSpaceSizeAnalyzeResponse
+ */
+export interface CommonResponseListSpaceSizeAnalyzeResponse {
+    /**
+     * return status code
+     * @type {number}
+     * @memberof CommonResponseListSpaceSizeAnalyzeResponse
+     */
+    'code'?: number;
+    /**
+     * return data
+     * @type {Array<SpaceSizeAnalyzeResponse>}
+     * @memberof CommonResponseListSpaceSizeAnalyzeResponse
+     */
+    'data'?: Array<SpaceSizeAnalyzeResponse>;
+    /**
+     * return message
+     * @type {string}
+     * @memberof CommonResponseListSpaceSizeAnalyzeResponse
+     */
+    'message'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface CommonResponseListSpaceTagAnalyzeResponse
+ */
+export interface CommonResponseListSpaceTagAnalyzeResponse {
+    /**
+     * return status code
+     * @type {number}
+     * @memberof CommonResponseListSpaceTagAnalyzeResponse
+     */
+    'code'?: number;
+    /**
+     * return data
+     * @type {Array<SpaceTagAnalyzeResponse>}
+     * @memberof CommonResponseListSpaceTagAnalyzeResponse
+     */
+    'data'?: Array<SpaceTagAnalyzeResponse>;
+    /**
+     * return message
+     * @type {string}
+     * @memberof CommonResponseListSpaceTagAnalyzeResponse
+     */
+    'message'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface CommonResponseListSpaceUserAnalyzeResponse
+ */
+export interface CommonResponseListSpaceUserAnalyzeResponse {
+    /**
+     * return status code
+     * @type {number}
+     * @memberof CommonResponseListSpaceUserAnalyzeResponse
+     */
+    'code'?: number;
+    /**
+     * return data
+     * @type {Array<SpaceUserAnalyzeResponse>}
+     * @memberof CommonResponseListSpaceUserAnalyzeResponse
+     */
+    'data'?: Array<SpaceUserAnalyzeResponse>;
+    /**
+     * return message
+     * @type {string}
+     * @memberof CommonResponseListSpaceUserAnalyzeResponse
+     */
+    'message'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface CommonResponseListSpaceUserVo
+ */
+export interface CommonResponseListSpaceUserVo {
+    /**
+     * return status code
+     * @type {number}
+     * @memberof CommonResponseListSpaceUserVo
+     */
+    'code'?: number;
+    /**
+     * return data
+     * @type {Array<SpaceUserVo>}
+     * @memberof CommonResponseListSpaceUserVo
+     */
+    'data'?: Array<SpaceUserVo>;
+    /**
+     * return message
+     * @type {string}
+     * @memberof CommonResponseListSpaceUserVo
+     */
+    'message'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface CommonResponseListSpaceVo
+ */
+export interface CommonResponseListSpaceVo {
+    /**
+     * return status code
+     * @type {number}
+     * @memberof CommonResponseListSpaceVo
+     */
+    'code'?: number;
+    /**
+     * return data
+     * @type {Array<SpaceVo>}
+     * @memberof CommonResponseListSpaceVo
+     */
+    'data'?: Array<SpaceVo>;
+    /**
+     * return message
+     * @type {string}
+     * @memberof CommonResponseListSpaceVo
      */
     'message'?: string;
 }
@@ -195,6 +370,31 @@ export interface CommonResponseLong {
      * return message
      * @type {string}
      * @memberof CommonResponseLong
+     */
+    'message'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface CommonResponseOutPaintingTaskStatusResponse
+ */
+export interface CommonResponseOutPaintingTaskStatusResponse {
+    /**
+     * return status code
+     * @type {number}
+     * @memberof CommonResponseOutPaintingTaskStatusResponse
+     */
+    'code'?: number;
+    /**
+     * return data
+     * @type {OutPaintingTaskStatusResponse}
+     * @memberof CommonResponseOutPaintingTaskStatusResponse
+     */
+    'data'?: OutPaintingTaskStatusResponse;
+    /**
+     * return message
+     * @type {string}
+     * @memberof CommonResponseOutPaintingTaskStatusResponse
      */
     'message'?: string;
 }
@@ -351,6 +551,56 @@ export interface CommonResponsePictureVo {
 /**
  * 
  * @export
+ * @interface CommonResponseSpaceUsageAnalyzeResponse
+ */
+export interface CommonResponseSpaceUsageAnalyzeResponse {
+    /**
+     * return status code
+     * @type {number}
+     * @memberof CommonResponseSpaceUsageAnalyzeResponse
+     */
+    'code'?: number;
+    /**
+     * return data
+     * @type {SpaceUsageAnalyzeResponse}
+     * @memberof CommonResponseSpaceUsageAnalyzeResponse
+     */
+    'data'?: SpaceUsageAnalyzeResponse;
+    /**
+     * return message
+     * @type {string}
+     * @memberof CommonResponseSpaceUsageAnalyzeResponse
+     */
+    'message'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface CommonResponseSpaceUserVo
+ */
+export interface CommonResponseSpaceUserVo {
+    /**
+     * return status code
+     * @type {number}
+     * @memberof CommonResponseSpaceUserVo
+     */
+    'code'?: number;
+    /**
+     * return data
+     * @type {SpaceUserVo}
+     * @memberof CommonResponseSpaceUserVo
+     */
+    'data'?: SpaceUserVo;
+    /**
+     * return message
+     * @type {string}
+     * @memberof CommonResponseSpaceUserVo
+     */
+    'message'?: string;
+}
+/**
+ * 
+ * @export
  * @interface CommonResponseSpaceVo
  */
 export interface CommonResponseSpaceVo {
@@ -370,6 +620,31 @@ export interface CommonResponseSpaceVo {
      * return message
      * @type {string}
      * @memberof CommonResponseSpaceVo
+     */
+    'message'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface CommonResponseString
+ */
+export interface CommonResponseString {
+    /**
+     * return status code
+     * @type {number}
+     * @memberof CommonResponseString
+     */
+    'code'?: number;
+    /**
+     * return data
+     * @type {string}
+     * @memberof CommonResponseString
+     */
+    'data'?: string;
+    /**
+     * return message
+     * @type {string}
+     * @memberof CommonResponseString
      */
     'message'?: string;
 }
@@ -422,6 +697,37 @@ export interface CommonResponseUserVo {
      * @memberof CommonResponseUserVo
      */
     'message'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface CreateOutPaintingTaskResponse
+ */
+export interface CreateOutPaintingTaskResponse {
+    /**
+     * 
+     * @type {Output}
+     * @memberof CreateOutPaintingTaskResponse
+     */
+    'output'?: Output;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateOutPaintingTaskResponse
+     */
+    'code'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateOutPaintingTaskResponse
+     */
+    'message'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateOutPaintingTaskResponse
+     */
+    'requestId'?: string;
 }
 /**
  * 
@@ -516,6 +822,44 @@ export interface OrderItem {
      * @memberof OrderItem
      */
     'asc'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface OutPaintingTaskStatusResponse
+ */
+export interface OutPaintingTaskStatusResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof OutPaintingTaskStatusResponse
+     */
+    'requestId'?: string;
+    /**
+     * 
+     * @type {Output}
+     * @memberof OutPaintingTaskStatusResponse
+     */
+    'output'?: Output;
+}
+/**
+ * 
+ * @export
+ * @interface Output
+ */
+export interface Output {
+    /**
+     * 
+     * @type {string}
+     * @memberof Output
+     */
+    'taskId'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Output
+     */
+    'taskStatus'?: string;
 }
 /**
  * 
@@ -735,6 +1079,79 @@ export interface PageUserVo {
      * @memberof PageUserVo
      */
     'pages'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface Parameters
+ */
+export interface Parameters {
+    /**
+     * 
+     * @type {number}
+     * @memberof Parameters
+     */
+    'angle'?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof Parameters
+     */
+    'outputRatio'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof Parameters
+     */
+    'topOffset'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Parameters
+     */
+    'bottomOffset'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Parameters
+     */
+    'leftOffset'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Parameters
+     */
+    'rightOffset'?: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Parameters
+     */
+    'bestQuality'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Parameters
+     */
+    'limitImageSize'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Parameters
+     */
+    'addWatermark'?: boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof Parameters
+     */
+    'xScale'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Parameters
+     */
+    'yScale'?: number;
 }
 /**
  * 
@@ -960,6 +1377,25 @@ export interface PictureEditRequest {
      * @memberof PictureEditRequest
      */
     'tags'?: Array<string>;
+}
+/**
+ * 
+ * @export
+ * @interface PictureOutPaintingRequest
+ */
+export interface PictureOutPaintingRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof PictureOutPaintingRequest
+     */
+    'pictureId'?: string;
+    /**
+     * 
+     * @type {Parameters}
+     * @memberof PictureOutPaintingRequest
+     */
+    'parameters'?: Parameters;
 }
 /**
  * 
@@ -1375,6 +1811,12 @@ export interface PictureVo {
      * @memberof PictureVo
      */
     'picColor'?: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof PictureVo
+     */
+    'permissions'?: Array<string>;
 }
 /**
  * 
@@ -1426,6 +1868,62 @@ export interface SpaceAddRequest {
      * @memberof SpaceAddRequest
      */
     'spaceLevel'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof SpaceAddRequest
+     */
+    'spaceType'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface SpaceCategoryAnalyzeRequest
+ */
+export interface SpaceCategoryAnalyzeRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof SpaceCategoryAnalyzeRequest
+     */
+    'spaceId'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SpaceCategoryAnalyzeRequest
+     */
+    'queryPublic'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SpaceCategoryAnalyzeRequest
+     */
+    'queryAll'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface SpaceCategoryAnalyzeResponse
+ */
+export interface SpaceCategoryAnalyzeResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof SpaceCategoryAnalyzeResponse
+     */
+    'category'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof SpaceCategoryAnalyzeResponse
+     */
+    'count'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof SpaceCategoryAnalyzeResponse
+     */
+    'totalSize'?: number;
 }
 /**
  * 
@@ -1531,6 +2029,113 @@ export interface SpaceQueryRequest {
      * @memberof SpaceQueryRequest
      */
     'spaceLevel'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof SpaceQueryRequest
+     */
+    'spaceType'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface SpaceRankAnalyzeRequest
+ */
+export interface SpaceRankAnalyzeRequest {
+    /**
+     * 
+     * @type {number}
+     * @memberof SpaceRankAnalyzeRequest
+     */
+    'topN'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface SpaceSizeAnalyzeRequest
+ */
+export interface SpaceSizeAnalyzeRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof SpaceSizeAnalyzeRequest
+     */
+    'spaceId'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SpaceSizeAnalyzeRequest
+     */
+    'queryPublic'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SpaceSizeAnalyzeRequest
+     */
+    'queryAll'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface SpaceSizeAnalyzeResponse
+ */
+export interface SpaceSizeAnalyzeResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof SpaceSizeAnalyzeResponse
+     */
+    'sizeRange'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof SpaceSizeAnalyzeResponse
+     */
+    'count'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface SpaceTagAnalyzeRequest
+ */
+export interface SpaceTagAnalyzeRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof SpaceTagAnalyzeRequest
+     */
+    'spaceId'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SpaceTagAnalyzeRequest
+     */
+    'queryPublic'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SpaceTagAnalyzeRequest
+     */
+    'queryAll'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface SpaceTagAnalyzeResponse
+ */
+export interface SpaceTagAnalyzeResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof SpaceTagAnalyzeResponse
+     */
+    'tag'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof SpaceTagAnalyzeResponse
+     */
+    'count'?: number;
 }
 /**
  * 
@@ -1568,6 +2173,260 @@ export interface SpaceUpdateRequest {
      * @memberof SpaceUpdateRequest
      */
     'maxCount'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface SpaceUsageAnalyzeRequest
+ */
+export interface SpaceUsageAnalyzeRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof SpaceUsageAnalyzeRequest
+     */
+    'spaceId'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SpaceUsageAnalyzeRequest
+     */
+    'queryPublic'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SpaceUsageAnalyzeRequest
+     */
+    'queryAll'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface SpaceUsageAnalyzeResponse
+ */
+export interface SpaceUsageAnalyzeResponse {
+    /**
+     * 
+     * @type {number}
+     * @memberof SpaceUsageAnalyzeResponse
+     */
+    'usedSize'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof SpaceUsageAnalyzeResponse
+     */
+    'maxSize'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof SpaceUsageAnalyzeResponse
+     */
+    'sizeUsageRatio'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof SpaceUsageAnalyzeResponse
+     */
+    'usedCount'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof SpaceUsageAnalyzeResponse
+     */
+    'maxCount'?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof SpaceUsageAnalyzeResponse
+     */
+    'countUsageRatio'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface SpaceUserAddRequest
+ */
+export interface SpaceUserAddRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof SpaceUserAddRequest
+     */
+    'spaceId'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SpaceUserAddRequest
+     */
+    'userId'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SpaceUserAddRequest
+     */
+    'spaceRole'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface SpaceUserAnalyzeRequest
+ */
+export interface SpaceUserAnalyzeRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof SpaceUserAnalyzeRequest
+     */
+    'spaceId'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SpaceUserAnalyzeRequest
+     */
+    'queryPublic'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SpaceUserAnalyzeRequest
+     */
+    'queryAll'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof SpaceUserAnalyzeRequest
+     */
+    'userId'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SpaceUserAnalyzeRequest
+     */
+    'timeDimension'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface SpaceUserAnalyzeResponse
+ */
+export interface SpaceUserAnalyzeResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof SpaceUserAnalyzeResponse
+     */
+    'period'?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof SpaceUserAnalyzeResponse
+     */
+    'count'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface SpaceUserEditRequest
+ */
+export interface SpaceUserEditRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof SpaceUserEditRequest
+     */
+    'id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SpaceUserEditRequest
+     */
+    'spaceRole'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface SpaceUserQueryRequest
+ */
+export interface SpaceUserQueryRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof SpaceUserQueryRequest
+     */
+    'id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SpaceUserQueryRequest
+     */
+    'spaceId'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SpaceUserQueryRequest
+     */
+    'userId'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SpaceUserQueryRequest
+     */
+    'spaceRole'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface SpaceUserVo
+ */
+export interface SpaceUserVo {
+    /**
+     * 
+     * @type {string}
+     * @memberof SpaceUserVo
+     */
+    'id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SpaceUserVo
+     */
+    'spaceId'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SpaceUserVo
+     */
+    'userId'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SpaceUserVo
+     */
+    'spaceRole'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SpaceUserVo
+     */
+    'createTime'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SpaceUserVo
+     */
+    'updateTime'?: string;
+    /**
+     * 
+     * @type {UserVo}
+     * @memberof SpaceUserVo
+     */
+    'user'?: UserVo;
+    /**
+     * 
+     * @type {SpaceVo}
+     * @memberof SpaceUserVo
+     */
+    'space'?: SpaceVo;
 }
 /**
  * 
@@ -1643,10 +2502,22 @@ export interface SpaceVo {
     'updateTime'?: string;
     /**
      * 
+     * @type {number}
+     * @memberof SpaceVo
+     */
+    'spaceType'?: number;
+    /**
+     * 
      * @type {UserVo}
      * @memberof SpaceVo
      */
     'user'?: UserVo;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof SpaceVo
+     */
+    'permissions'?: Array<string>;
 }
 /**
  * 
@@ -1976,6 +2847,41 @@ export const PictureControllerApiAxiosParamCreator = function (configuration?: C
     return {
         /**
          * 
+         * @param {PictureOutPaintingRequest} pictureOutPaintingRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createPictureOutPaintingTask: async (pictureOutPaintingRequest: PictureOutPaintingRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'pictureOutPaintingRequest' is not null or undefined
+            assertParamExists('createPictureOutPaintingTask', 'pictureOutPaintingRequest', pictureOutPaintingRequest)
+            const localVarPath = `/picture/out-painting`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(pictureOutPaintingRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @param {DeleteRequest} deleteRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2137,6 +3043,42 @@ export const PictureControllerApiAxiosParamCreator = function (configuration?: C
 
             if (id !== undefined) {
                 localVarQueryParameter['id'] = id;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} taskId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPictureOutPaintingTaskStatus: async (taskId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'taskId' is not null or undefined
+            assertParamExists('getPictureOutPaintingTaskStatus', 'taskId', taskId)
+            const localVarPath = `/picture/out-painting/status`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (taskId !== undefined) {
+                localVarQueryParameter['taskId'] = taskId;
             }
 
 
@@ -2523,6 +3465,18 @@ export const PictureControllerApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @param {PictureOutPaintingRequest} pictureOutPaintingRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createPictureOutPaintingTask(pictureOutPaintingRequest: PictureOutPaintingRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CommonResponseCreateOutPaintingTaskResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createPictureOutPaintingTask(pictureOutPaintingRequest, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PictureControllerApi.createPictureOutPaintingTask']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @param {DeleteRequest} deleteRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2579,6 +3533,18 @@ export const PictureControllerApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getPictureById(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['PictureControllerApi.getPictureById']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {string} taskId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getPictureOutPaintingTaskStatus(taskId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CommonResponseOutPaintingTaskStatusResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getPictureOutPaintingTaskStatus(taskId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['PictureControllerApi.getPictureOutPaintingTaskStatus']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -2715,6 +3681,15 @@ export const PictureControllerApiFactory = function (configuration?: Configurati
     return {
         /**
          * 
+         * @param {PictureOutPaintingRequest} pictureOutPaintingRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createPictureOutPaintingTask(pictureOutPaintingRequest: PictureOutPaintingRequest, options?: RawAxiosRequestConfig): AxiosPromise<CommonResponseCreateOutPaintingTaskResponse> {
+            return localVarFp.createPictureOutPaintingTask(pictureOutPaintingRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @param {DeleteRequest} deleteRequest 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -2757,6 +3732,15 @@ export const PictureControllerApiFactory = function (configuration?: Configurati
          */
         getPictureById(id: string, options?: RawAxiosRequestConfig): AxiosPromise<CommonResponsePicture> {
             return localVarFp.getPictureById(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} taskId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getPictureOutPaintingTaskStatus(taskId: string, options?: RawAxiosRequestConfig): AxiosPromise<CommonResponseOutPaintingTaskStatusResponse> {
+            return localVarFp.getPictureOutPaintingTaskStatus(taskId, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -2862,6 +3846,17 @@ export const PictureControllerApiFactory = function (configuration?: Configurati
 export class PictureControllerApi extends BaseAPI {
     /**
      * 
+     * @param {PictureOutPaintingRequest} pictureOutPaintingRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PictureControllerApi
+     */
+    public createPictureOutPaintingTask(pictureOutPaintingRequest: PictureOutPaintingRequest, options?: RawAxiosRequestConfig) {
+        return PictureControllerApiFp(this.configuration).createPictureOutPaintingTask(pictureOutPaintingRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @param {DeleteRequest} deleteRequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2913,6 +3908,17 @@ export class PictureControllerApi extends BaseAPI {
      */
     public getPictureById(id: string, options?: RawAxiosRequestConfig) {
         return PictureControllerApiFp(this.configuration).getPictureById(id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} taskId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PictureControllerApi
+     */
+    public getPictureOutPaintingTaskStatus(taskId: string, options?: RawAxiosRequestConfig) {
+        return PictureControllerApiFp(this.configuration).getPictureOutPaintingTaskStatus(taskId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -3025,6 +4031,447 @@ export class PictureControllerApi extends BaseAPI {
      */
     public uploadPictureByUrl(pictureUploadRequest: PictureUploadRequest, options?: RawAxiosRequestConfig) {
         return PictureControllerApiFp(this.configuration).uploadPictureByUrl(pictureUploadRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
+ * SpaceAnalyzeControllerApi - axios parameter creator
+ * @export
+ */
+export const SpaceAnalyzeControllerApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @param {SpaceCategoryAnalyzeRequest} spaceCategoryAnalyzeRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSpaceCategoryAnalyze: async (spaceCategoryAnalyzeRequest: SpaceCategoryAnalyzeRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'spaceCategoryAnalyzeRequest' is not null or undefined
+            assertParamExists('getSpaceCategoryAnalyze', 'spaceCategoryAnalyzeRequest', spaceCategoryAnalyzeRequest)
+            const localVarPath = `/space/analyze/category`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(spaceCategoryAnalyzeRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {SpaceRankAnalyzeRequest} spaceRankAnalyzeRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSpaceRankAnalyze: async (spaceRankAnalyzeRequest: SpaceRankAnalyzeRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'spaceRankAnalyzeRequest' is not null or undefined
+            assertParamExists('getSpaceRankAnalyze', 'spaceRankAnalyzeRequest', spaceRankAnalyzeRequest)
+            const localVarPath = `/space/analyze/rank`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(spaceRankAnalyzeRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {SpaceSizeAnalyzeRequest} spaceSizeAnalyzeRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSpaceSizeAnalyze: async (spaceSizeAnalyzeRequest: SpaceSizeAnalyzeRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'spaceSizeAnalyzeRequest' is not null or undefined
+            assertParamExists('getSpaceSizeAnalyze', 'spaceSizeAnalyzeRequest', spaceSizeAnalyzeRequest)
+            const localVarPath = `/space/analyze/size`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(spaceSizeAnalyzeRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {SpaceTagAnalyzeRequest} spaceTagAnalyzeRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSpaceTagAnalyze: async (spaceTagAnalyzeRequest: SpaceTagAnalyzeRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'spaceTagAnalyzeRequest' is not null or undefined
+            assertParamExists('getSpaceTagAnalyze', 'spaceTagAnalyzeRequest', spaceTagAnalyzeRequest)
+            const localVarPath = `/space/analyze/tag`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(spaceTagAnalyzeRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {SpaceUsageAnalyzeRequest} spaceUsageAnalyzeRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSpaceUsageAnalyze: async (spaceUsageAnalyzeRequest: SpaceUsageAnalyzeRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'spaceUsageAnalyzeRequest' is not null or undefined
+            assertParamExists('getSpaceUsageAnalyze', 'spaceUsageAnalyzeRequest', spaceUsageAnalyzeRequest)
+            const localVarPath = `/space/analyze/usage`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(spaceUsageAnalyzeRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {SpaceUserAnalyzeRequest} spaceUserAnalyzeRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSpaceUserAnalyze: async (spaceUserAnalyzeRequest: SpaceUserAnalyzeRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'spaceUserAnalyzeRequest' is not null or undefined
+            assertParamExists('getSpaceUserAnalyze', 'spaceUserAnalyzeRequest', spaceUserAnalyzeRequest)
+            const localVarPath = `/space/analyze/user`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(spaceUserAnalyzeRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * SpaceAnalyzeControllerApi - functional programming interface
+ * @export
+ */
+export const SpaceAnalyzeControllerApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = SpaceAnalyzeControllerApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @param {SpaceCategoryAnalyzeRequest} spaceCategoryAnalyzeRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getSpaceCategoryAnalyze(spaceCategoryAnalyzeRequest: SpaceCategoryAnalyzeRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CommonResponseListSpaceCategoryAnalyzeResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSpaceCategoryAnalyze(spaceCategoryAnalyzeRequest, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['SpaceAnalyzeControllerApi.getSpaceCategoryAnalyze']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {SpaceRankAnalyzeRequest} spaceRankAnalyzeRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getSpaceRankAnalyze(spaceRankAnalyzeRequest: SpaceRankAnalyzeRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CommonResponseListSpaceVo>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSpaceRankAnalyze(spaceRankAnalyzeRequest, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['SpaceAnalyzeControllerApi.getSpaceRankAnalyze']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {SpaceSizeAnalyzeRequest} spaceSizeAnalyzeRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getSpaceSizeAnalyze(spaceSizeAnalyzeRequest: SpaceSizeAnalyzeRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CommonResponseListSpaceSizeAnalyzeResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSpaceSizeAnalyze(spaceSizeAnalyzeRequest, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['SpaceAnalyzeControllerApi.getSpaceSizeAnalyze']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {SpaceTagAnalyzeRequest} spaceTagAnalyzeRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getSpaceTagAnalyze(spaceTagAnalyzeRequest: SpaceTagAnalyzeRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CommonResponseListSpaceTagAnalyzeResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSpaceTagAnalyze(spaceTagAnalyzeRequest, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['SpaceAnalyzeControllerApi.getSpaceTagAnalyze']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {SpaceUsageAnalyzeRequest} spaceUsageAnalyzeRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getSpaceUsageAnalyze(spaceUsageAnalyzeRequest: SpaceUsageAnalyzeRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CommonResponseSpaceUsageAnalyzeResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSpaceUsageAnalyze(spaceUsageAnalyzeRequest, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['SpaceAnalyzeControllerApi.getSpaceUsageAnalyze']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {SpaceUserAnalyzeRequest} spaceUserAnalyzeRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getSpaceUserAnalyze(spaceUserAnalyzeRequest: SpaceUserAnalyzeRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CommonResponseListSpaceUserAnalyzeResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSpaceUserAnalyze(spaceUserAnalyzeRequest, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['SpaceAnalyzeControllerApi.getSpaceUserAnalyze']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * SpaceAnalyzeControllerApi - factory interface
+ * @export
+ */
+export const SpaceAnalyzeControllerApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = SpaceAnalyzeControllerApiFp(configuration)
+    return {
+        /**
+         * 
+         * @param {SpaceCategoryAnalyzeRequest} spaceCategoryAnalyzeRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSpaceCategoryAnalyze(spaceCategoryAnalyzeRequest: SpaceCategoryAnalyzeRequest, options?: RawAxiosRequestConfig): AxiosPromise<CommonResponseListSpaceCategoryAnalyzeResponse> {
+            return localVarFp.getSpaceCategoryAnalyze(spaceCategoryAnalyzeRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {SpaceRankAnalyzeRequest} spaceRankAnalyzeRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSpaceRankAnalyze(spaceRankAnalyzeRequest: SpaceRankAnalyzeRequest, options?: RawAxiosRequestConfig): AxiosPromise<CommonResponseListSpaceVo> {
+            return localVarFp.getSpaceRankAnalyze(spaceRankAnalyzeRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {SpaceSizeAnalyzeRequest} spaceSizeAnalyzeRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSpaceSizeAnalyze(spaceSizeAnalyzeRequest: SpaceSizeAnalyzeRequest, options?: RawAxiosRequestConfig): AxiosPromise<CommonResponseListSpaceSizeAnalyzeResponse> {
+            return localVarFp.getSpaceSizeAnalyze(spaceSizeAnalyzeRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {SpaceTagAnalyzeRequest} spaceTagAnalyzeRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSpaceTagAnalyze(spaceTagAnalyzeRequest: SpaceTagAnalyzeRequest, options?: RawAxiosRequestConfig): AxiosPromise<CommonResponseListSpaceTagAnalyzeResponse> {
+            return localVarFp.getSpaceTagAnalyze(spaceTagAnalyzeRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {SpaceUsageAnalyzeRequest} spaceUsageAnalyzeRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSpaceUsageAnalyze(spaceUsageAnalyzeRequest: SpaceUsageAnalyzeRequest, options?: RawAxiosRequestConfig): AxiosPromise<CommonResponseSpaceUsageAnalyzeResponse> {
+            return localVarFp.getSpaceUsageAnalyze(spaceUsageAnalyzeRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {SpaceUserAnalyzeRequest} spaceUserAnalyzeRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSpaceUserAnalyze(spaceUserAnalyzeRequest: SpaceUserAnalyzeRequest, options?: RawAxiosRequestConfig): AxiosPromise<CommonResponseListSpaceUserAnalyzeResponse> {
+            return localVarFp.getSpaceUserAnalyze(spaceUserAnalyzeRequest, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * SpaceAnalyzeControllerApi - object-oriented interface
+ * @export
+ * @class SpaceAnalyzeControllerApi
+ * @extends {BaseAPI}
+ */
+export class SpaceAnalyzeControllerApi extends BaseAPI {
+    /**
+     * 
+     * @param {SpaceCategoryAnalyzeRequest} spaceCategoryAnalyzeRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SpaceAnalyzeControllerApi
+     */
+    public getSpaceCategoryAnalyze(spaceCategoryAnalyzeRequest: SpaceCategoryAnalyzeRequest, options?: RawAxiosRequestConfig) {
+        return SpaceAnalyzeControllerApiFp(this.configuration).getSpaceCategoryAnalyze(spaceCategoryAnalyzeRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {SpaceRankAnalyzeRequest} spaceRankAnalyzeRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SpaceAnalyzeControllerApi
+     */
+    public getSpaceRankAnalyze(spaceRankAnalyzeRequest: SpaceRankAnalyzeRequest, options?: RawAxiosRequestConfig) {
+        return SpaceAnalyzeControllerApiFp(this.configuration).getSpaceRankAnalyze(spaceRankAnalyzeRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {SpaceSizeAnalyzeRequest} spaceSizeAnalyzeRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SpaceAnalyzeControllerApi
+     */
+    public getSpaceSizeAnalyze(spaceSizeAnalyzeRequest: SpaceSizeAnalyzeRequest, options?: RawAxiosRequestConfig) {
+        return SpaceAnalyzeControllerApiFp(this.configuration).getSpaceSizeAnalyze(spaceSizeAnalyzeRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {SpaceTagAnalyzeRequest} spaceTagAnalyzeRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SpaceAnalyzeControllerApi
+     */
+    public getSpaceTagAnalyze(spaceTagAnalyzeRequest: SpaceTagAnalyzeRequest, options?: RawAxiosRequestConfig) {
+        return SpaceAnalyzeControllerApiFp(this.configuration).getSpaceTagAnalyze(spaceTagAnalyzeRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {SpaceUsageAnalyzeRequest} spaceUsageAnalyzeRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SpaceAnalyzeControllerApi
+     */
+    public getSpaceUsageAnalyze(spaceUsageAnalyzeRequest: SpaceUsageAnalyzeRequest, options?: RawAxiosRequestConfig) {
+        return SpaceAnalyzeControllerApiFp(this.configuration).getSpaceUsageAnalyze(spaceUsageAnalyzeRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {SpaceUserAnalyzeRequest} spaceUserAnalyzeRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SpaceAnalyzeControllerApi
+     */
+    public getSpaceUserAnalyze(spaceUserAnalyzeRequest: SpaceUserAnalyzeRequest, options?: RawAxiosRequestConfig) {
+        return SpaceAnalyzeControllerApiFp(this.configuration).getSpaceUserAnalyze(spaceUserAnalyzeRequest, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -3598,6 +5045,438 @@ export class SpaceControllerApi extends BaseAPI {
 
 
 /**
+ * SpaceUserControllerApi - axios parameter creator
+ * @export
+ */
+export const SpaceUserControllerApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @param {SpaceUserAddRequest} spaceUserAddRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addSpaceUser: async (spaceUserAddRequest: SpaceUserAddRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'spaceUserAddRequest' is not null or undefined
+            assertParamExists('addSpaceUser', 'spaceUserAddRequest', spaceUserAddRequest)
+            const localVarPath = `/space-user`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(spaceUserAddRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {DeleteRequest} deleteRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteSpaceUser: async (deleteRequest: DeleteRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'deleteRequest' is not null or undefined
+            assertParamExists('deleteSpaceUser', 'deleteRequest', deleteRequest)
+            const localVarPath = `/space-user`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(deleteRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {SpaceUserEditRequest} spaceUserEditRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        editSpaceUser: async (spaceUserEditRequest: SpaceUserEditRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'spaceUserEditRequest' is not null or undefined
+            assertParamExists('editSpaceUser', 'spaceUserEditRequest', spaceUserEditRequest)
+            const localVarPath = `/space-user`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(spaceUserEditRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {SpaceUserQueryRequest} spaceUserQueryRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSpaceUser: async (spaceUserQueryRequest: SpaceUserQueryRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'spaceUserQueryRequest' is not null or undefined
+            assertParamExists('getSpaceUser', 'spaceUserQueryRequest', spaceUserQueryRequest)
+            const localVarPath = `/space-user/single`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(spaceUserQueryRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listMyTeamSpace: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/space-user/list/my`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {SpaceUserQueryRequest} spaceUserQueryRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listSpaceUser: async (spaceUserQueryRequest: SpaceUserQueryRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'spaceUserQueryRequest' is not null or undefined
+            assertParamExists('listSpaceUser', 'spaceUserQueryRequest', spaceUserQueryRequest)
+            const localVarPath = `/space-user/list`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(spaceUserQueryRequest, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * SpaceUserControllerApi - functional programming interface
+ * @export
+ */
+export const SpaceUserControllerApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = SpaceUserControllerApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @param {SpaceUserAddRequest} spaceUserAddRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async addSpaceUser(spaceUserAddRequest: SpaceUserAddRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CommonResponseString>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.addSpaceUser(spaceUserAddRequest, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['SpaceUserControllerApi.addSpaceUser']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {DeleteRequest} deleteRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deleteSpaceUser(deleteRequest: DeleteRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CommonResponseBoolean>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deleteSpaceUser(deleteRequest, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['SpaceUserControllerApi.deleteSpaceUser']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {SpaceUserEditRequest} spaceUserEditRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async editSpaceUser(spaceUserEditRequest: SpaceUserEditRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CommonResponseBoolean>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.editSpaceUser(spaceUserEditRequest, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['SpaceUserControllerApi.editSpaceUser']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {SpaceUserQueryRequest} spaceUserQueryRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getSpaceUser(spaceUserQueryRequest: SpaceUserQueryRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CommonResponseSpaceUserVo>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSpaceUser(spaceUserQueryRequest, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['SpaceUserControllerApi.getSpaceUser']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listMyTeamSpace(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CommonResponseListSpaceUserVo>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listMyTeamSpace(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['SpaceUserControllerApi.listMyTeamSpace']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {SpaceUserQueryRequest} spaceUserQueryRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listSpaceUser(spaceUserQueryRequest: SpaceUserQueryRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CommonResponseListSpaceUserVo>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listSpaceUser(spaceUserQueryRequest, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['SpaceUserControllerApi.listSpaceUser']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * SpaceUserControllerApi - factory interface
+ * @export
+ */
+export const SpaceUserControllerApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = SpaceUserControllerApiFp(configuration)
+    return {
+        /**
+         * 
+         * @param {SpaceUserAddRequest} spaceUserAddRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        addSpaceUser(spaceUserAddRequest: SpaceUserAddRequest, options?: RawAxiosRequestConfig): AxiosPromise<CommonResponseString> {
+            return localVarFp.addSpaceUser(spaceUserAddRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {DeleteRequest} deleteRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deleteSpaceUser(deleteRequest: DeleteRequest, options?: RawAxiosRequestConfig): AxiosPromise<CommonResponseBoolean> {
+            return localVarFp.deleteSpaceUser(deleteRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {SpaceUserEditRequest} spaceUserEditRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        editSpaceUser(spaceUserEditRequest: SpaceUserEditRequest, options?: RawAxiosRequestConfig): AxiosPromise<CommonResponseBoolean> {
+            return localVarFp.editSpaceUser(spaceUserEditRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {SpaceUserQueryRequest} spaceUserQueryRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSpaceUser(spaceUserQueryRequest: SpaceUserQueryRequest, options?: RawAxiosRequestConfig): AxiosPromise<CommonResponseSpaceUserVo> {
+            return localVarFp.getSpaceUser(spaceUserQueryRequest, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listMyTeamSpace(options?: RawAxiosRequestConfig): AxiosPromise<CommonResponseListSpaceUserVo> {
+            return localVarFp.listMyTeamSpace(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {SpaceUserQueryRequest} spaceUserQueryRequest 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listSpaceUser(spaceUserQueryRequest: SpaceUserQueryRequest, options?: RawAxiosRequestConfig): AxiosPromise<CommonResponseListSpaceUserVo> {
+            return localVarFp.listSpaceUser(spaceUserQueryRequest, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * SpaceUserControllerApi - object-oriented interface
+ * @export
+ * @class SpaceUserControllerApi
+ * @extends {BaseAPI}
+ */
+export class SpaceUserControllerApi extends BaseAPI {
+    /**
+     * 
+     * @param {SpaceUserAddRequest} spaceUserAddRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SpaceUserControllerApi
+     */
+    public addSpaceUser(spaceUserAddRequest: SpaceUserAddRequest, options?: RawAxiosRequestConfig) {
+        return SpaceUserControllerApiFp(this.configuration).addSpaceUser(spaceUserAddRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {DeleteRequest} deleteRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SpaceUserControllerApi
+     */
+    public deleteSpaceUser(deleteRequest: DeleteRequest, options?: RawAxiosRequestConfig) {
+        return SpaceUserControllerApiFp(this.configuration).deleteSpaceUser(deleteRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {SpaceUserEditRequest} spaceUserEditRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SpaceUserControllerApi
+     */
+    public editSpaceUser(spaceUserEditRequest: SpaceUserEditRequest, options?: RawAxiosRequestConfig) {
+        return SpaceUserControllerApiFp(this.configuration).editSpaceUser(spaceUserEditRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {SpaceUserQueryRequest} spaceUserQueryRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SpaceUserControllerApi
+     */
+    public getSpaceUser(spaceUserQueryRequest: SpaceUserQueryRequest, options?: RawAxiosRequestConfig) {
+        return SpaceUserControllerApiFp(this.configuration).getSpaceUser(spaceUserQueryRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SpaceUserControllerApi
+     */
+    public listMyTeamSpace(options?: RawAxiosRequestConfig) {
+        return SpaceUserControllerApiFp(this.configuration).listMyTeamSpace(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {SpaceUserQueryRequest} spaceUserQueryRequest 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SpaceUserControllerApi
+     */
+    public listSpaceUser(spaceUserQueryRequest: SpaceUserQueryRequest, options?: RawAxiosRequestConfig) {
+        return SpaceUserControllerApiFp(this.configuration).listSpaceUser(spaceUserQueryRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
  * UnresolvedEntityControllerApi - axios parameter creator
  * @export
  */
@@ -3666,8 +5545,124 @@ export const UnresolvedEntityControllerApiAxiosParamCreator = function (configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
+        getSpaceCategoryAnalyzeResponse: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/entity/unresolved/space/analyze/space-category-analyze-response`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
         getSpaceLevelEntity: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/entity/unresolved/space/space-level`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSpaceSizeAnalyzeResponse: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/entity/unresolved/space/analyze/space-size-analyze-response`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSpaceTagAnalyzeResponse: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/entity/unresolved/space/analyze/space-tag-analyze-response`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSpaceUserAnalyzeResponse: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/entity/unresolved/space/analyze/space-user-analyze-response`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -3727,10 +5722,54 @@ export const UnresolvedEntityControllerApiFp = function(configuration?: Configur
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
+        async getSpaceCategoryAnalyzeResponse(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SpaceCategoryAnalyzeResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSpaceCategoryAnalyzeResponse(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['UnresolvedEntityControllerApi.getSpaceCategoryAnalyzeResponse']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
         async getSpaceLevelEntity(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SpaceLevel>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getSpaceLevelEntity(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['UnresolvedEntityControllerApi.getSpaceLevelEntity']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getSpaceSizeAnalyzeResponse(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SpaceSizeAnalyzeResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSpaceSizeAnalyzeResponse(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['UnresolvedEntityControllerApi.getSpaceSizeAnalyzeResponse']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getSpaceTagAnalyzeResponse(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SpaceTagAnalyzeResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSpaceTagAnalyzeResponse(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['UnresolvedEntityControllerApi.getSpaceTagAnalyzeResponse']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getSpaceUserAnalyzeResponse(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SpaceUserAnalyzeResponse>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getSpaceUserAnalyzeResponse(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['UnresolvedEntityControllerApi.getSpaceUserAnalyzeResponse']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -3764,8 +5803,40 @@ export const UnresolvedEntityControllerApiFactory = function (configuration?: Co
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
+        getSpaceCategoryAnalyzeResponse(options?: RawAxiosRequestConfig): AxiosPromise<SpaceCategoryAnalyzeResponse> {
+            return localVarFp.getSpaceCategoryAnalyzeResponse(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
         getSpaceLevelEntity(options?: RawAxiosRequestConfig): AxiosPromise<SpaceLevel> {
             return localVarFp.getSpaceLevelEntity(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSpaceSizeAnalyzeResponse(options?: RawAxiosRequestConfig): AxiosPromise<SpaceSizeAnalyzeResponse> {
+            return localVarFp.getSpaceSizeAnalyzeResponse(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSpaceTagAnalyzeResponse(options?: RawAxiosRequestConfig): AxiosPromise<SpaceTagAnalyzeResponse> {
+            return localVarFp.getSpaceTagAnalyzeResponse(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getSpaceUserAnalyzeResponse(options?: RawAxiosRequestConfig): AxiosPromise<SpaceUserAnalyzeResponse> {
+            return localVarFp.getSpaceUserAnalyzeResponse(options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -3803,8 +5874,48 @@ export class UnresolvedEntityControllerApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UnresolvedEntityControllerApi
      */
+    public getSpaceCategoryAnalyzeResponse(options?: RawAxiosRequestConfig) {
+        return UnresolvedEntityControllerApiFp(this.configuration).getSpaceCategoryAnalyzeResponse(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UnresolvedEntityControllerApi
+     */
     public getSpaceLevelEntity(options?: RawAxiosRequestConfig) {
         return UnresolvedEntityControllerApiFp(this.configuration).getSpaceLevelEntity(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UnresolvedEntityControllerApi
+     */
+    public getSpaceSizeAnalyzeResponse(options?: RawAxiosRequestConfig) {
+        return UnresolvedEntityControllerApiFp(this.configuration).getSpaceSizeAnalyzeResponse(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UnresolvedEntityControllerApi
+     */
+    public getSpaceTagAnalyzeResponse(options?: RawAxiosRequestConfig) {
+        return UnresolvedEntityControllerApiFp(this.configuration).getSpaceTagAnalyzeResponse(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UnresolvedEntityControllerApi
+     */
+    public getSpaceUserAnalyzeResponse(options?: RawAxiosRequestConfig) {
+        return UnresolvedEntityControllerApiFp(this.configuration).getSpaceUserAnalyzeResponse(options).then((request) => request(this.axios, this.basePath));
     }
 }
 
