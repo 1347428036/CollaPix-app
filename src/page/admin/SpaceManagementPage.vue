@@ -4,6 +4,12 @@
       <h2>Space management</h2>
       <a-space>
         <a-button type="primary" href="/space/add" target="_blank">+ Create Space</a-button>
+        <a-button type="primary" ghost href="/analyze/space?queryPublic=1" target="_blank"
+          >Analyze Public Space</a-button
+        >
+        <a-button type="primary" ghost href="/analyze/space?queryAll=1" target="_blank"
+          >Analyze All Space</a-button
+        >
       </a-space>
     </a-flex>
     <div style="margin-bottom: 2rem"></div>
@@ -32,6 +38,15 @@
         >
         </a-select>
       </a-form-item>
+      <a-form-item label="Space Type" name="spaceType">
+        <a-select
+          v-model:value="searchParamRef.spaceType"
+          :options="SPACE_TYPE_OPTIONS"
+          placeholder="Select space type"
+          style="min-width: 10rem"
+          allow-clear
+        />
+      </a-form-item>
       <a-form-item label="User ID" name="userId">
         <a-input
           v-model:value="searchParamRef.userId"
@@ -54,6 +69,9 @@
         <template v-if="column.dataIndex === 'spaceLevel'">
           <a-tag>{{ SPACE_LEVEL_MAP[record.spaceLevel] }}</a-tag>
         </template>
+        <template v-if="column.dataIndex === 'spaceType'">
+          <a-tag>{{ SPACE_TYPE_MAP[record.spaceType] }}</a-tag>
+        </template>
         <template v-if="column.dataIndex === 'spaceUseInfo'">
           <div>Size: {{ formatSize(record.totalSize) }} / {{ formatSize(record.maxSize) }}</div>
           <div>Amount: {{ record.totalCount }} / {{ record.maxCount }}</div>
@@ -65,11 +83,19 @@
           {{ dayjs(record.editTime).format('YYYY-MM-DD HH:mm:ss') }}
         </template>
         <template v-else-if="column.key === 'action'">
-          <a-space wrap>
-            <a-button type="link" :href="`/space/add?id=${record.id}`" target="_blank"
-              >Edit</a-button
+          <a-space wrap size="5">
+            <a-button
+              type="link"
+              size="small"
+              :href="`/analyze/space?spaceId=${record.id}`"
+              target="_blank"
             >
-            <a-button type="link" danger @click="doDelete(record.id)">Delete</a-button>
+              Analyze
+            </a-button>
+            <a-button type="link" size="small" :href="`/space/add?id=${record.id}`" target="_blank">
+              Edit
+            </a-button>
+            <a-button type="link" size="small" danger @click="doDelete(record.id)">Delete</a-button>
           </a-space>
         </template>
       </template>
@@ -82,7 +108,12 @@ import dayjs from 'dayjs'
 import { message } from 'ant-design-vue'
 import { formatSize } from '@/util'
 import type { PageSpaceVo, SpaceQueryRequest, SpaceVo } from '@/api/api'
-import { SPACE_LEVEL_MAP, SPACE_LEVEL_OPTIONS } from '@/constant/spaceConstant'
+import {
+  SPACE_LEVEL_MAP,
+  SPACE_LEVEL_OPTIONS,
+  SPACE_TYPE_MAP,
+  SPACE_TYPE_OPTIONS,
+} from '@/constant/spaceConstant'
 import { spaceController } from '@/api/apiFactory'
 
 const columns = [
@@ -99,6 +130,11 @@ const columns = [
   {
     title: 'Space Level',
     dataIndex: 'spaceLevel',
+    width: 100,
+  },
+  {
+    title: 'Space Type',
+    dataIndex: 'spaceType',
     width: 100,
   },
   {
@@ -125,7 +161,7 @@ const columns = [
   {
     title: 'Action',
     key: 'action',
-    width: 80,
+    width: 160,
   },
 ]
 
