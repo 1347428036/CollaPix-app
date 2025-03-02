@@ -79,7 +79,7 @@
                 <EditOutlined />
               </template>
             </a-button>
-            <a-button v-if="canEdit" danger @click="doDelete">
+            <a-button v-if="canDelete" danger @click="doDelete">
               Delete
               <template #icon>
                 <DeleteOutlined />
@@ -99,7 +99,6 @@ import { pictureController } from '@/api/apiFactory'
 import { message } from 'ant-design-vue'
 import { computed, onMounted, ref } from 'vue'
 import { downloadImage, formatSize, toHexColor } from '@/util'
-import { useLoginUserStore } from '@/stores/useLoginUserStore'
 import { useRouter } from 'vue-router'
 import {
   DeleteOutlined,
@@ -108,36 +107,29 @@ import {
   ShareAltOutlined,
 } from '@ant-design/icons-vue'
 import ShareModal from '@/components/ShareModal.vue'
+import { SPACE_PERMISSION_ENUM } from '@/constant/spaceConstant'
 
 const props = defineProps<{
-  id: string | number
+  id: string
 }>()
 const picture = ref<PictureVo>({})
-const loginUserStore = useLoginUserStore()
 const router = useRouter()
-// Whether the user has edit permission
-const canEdit = computed(() => {
-  const loginUser = loginUserStore.getLoginUser()
-  // Unlogged users cannot edit
-  if (!loginUser.id) {
-    return false
-  }
-  // Only the owner or admin can edit
-  const user = picture.value.user || {}
-  return loginUser.id === user.id || loginUser.userRole === 'admin'
-})
-
 const shareModalRef = ref()
 const shareLink = ref<string>('')
 
-onMounted(() => {
-  fetchPictureDetail()
-})
+function createPermissionChecker(permission: string) {
+  return computed(() => {
+    return (picture.value.permissions ?? []).includes(permission)
+  })
+}
+
+const canEdit = createPermissionChecker(SPACE_PERMISSION_ENUM.PICTURE_EDIT)
+const canDelete = createPermissionChecker(SPACE_PERMISSION_ENUM.PICTURE_DELETE)
 
 // Fetch picture details
 const fetchPictureDetail = async () => {
   try {
-    const res = await pictureController.getPictureVoById(props.id)
+    const res = (await pictureController.getPictureVoById(props.id)) as PictureVo
     if (res) {
       picture.value = res
     } else {
@@ -149,11 +141,9 @@ const fetchPictureDetail = async () => {
   }
 }
 
-// Edit
 const doEdit = () => {
-  router.push('/picture/add?id=' + picture.value.id)
+  router.push(`/picture/add?id=${picture.value.id}&spaceId=${picture.value.spaceId}`)
 }
-// Delete
 const doDelete = async () => {
   const id = picture.value.id
   if (!id) {
@@ -177,6 +167,10 @@ const doShare = () => {
     shareModalRef.value.openModal()
   }
 }
+
+onMounted(() => {
+  fetchPictureDetail()
+})
 </script>
 
 <style scoped></style>

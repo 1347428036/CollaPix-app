@@ -2,12 +2,41 @@
   <div id="space-detail-page">
     <!-- Space info -->
     <a-flex justify="space-between">
-      <h2>{{ space.spaceName }}(private space)</h2>
+      <h2>
+        {{ space.spaceName }}({{ SPACE_TYPE_MAP[space.spaceType ?? SPACE_TYPE_ENUM.PRIVATE] }})
+      </h2>
       <a-space size="middle">
-        <a-button type="primary" :href="`/picture/add?spaceId=${id}`" target="_blank">
-          + Create Picture
+        <a-button
+          v-if="canManageSpaceUser && SPACE_TYPE_ENUM.TEAM === space.spaceType"
+          type="primary"
+          ghost
+          :icon="h(TeamOutlined)"
+          :href="`/space/user/management/${id}`"
+          target="_blank"
+        >
+          Member management
         </a-button>
-        <a-button :icon="h(EditOutlined)" @click="doBatchEdit"> Batch edit</a-button>
+        <a-button
+          v-if="canUploadPicture"
+          type="primary"
+          :href="`/picture/add?spaceId=${id}`"
+          target="_blank"
+        >
+          + Create picture
+        </a-button>
+        <a-button
+          type="primary"
+          ghost
+          :icon="h(BarChartOutlined)"
+          :href="`/analyze/space?spaceId=${id}`"
+          target="_blank"
+        >
+          Space analyze
+        </a-button>
+
+        <a-button v-if="canEditPicture" :icon="h(EditOutlined)" @click="doBatchEdit">
+          Batch edit</a-button
+        >
         <a-tooltip :title="usedSpaceTooltip" placement="left">
           <a-progress type="circle" :percent="caclUsedSpaceSizePercent()" :size="42" />
         </a-tooltip>
@@ -24,6 +53,8 @@
       :dataList="dataList"
       :loading="loading"
       :showOp="true"
+      :can-edit="canEditPicture"
+      :can-delete="canDeletePicture"
       :onReload="fetchPictureData"
     />
     <a-pagination
@@ -48,13 +79,14 @@ import type { PagePictureVo, PictureQueryRequest, PictureVo, SpaceVo } from '@/a
 import { pictureController, spaceController } from '@/api/apiFactory'
 import { formatSize } from '@/util'
 import { message } from 'ant-design-vue'
-import { computed, onMounted, ref, h } from 'vue'
+import { computed, onMounted, ref, h, watch } from 'vue'
 import PictureList from '@/components/PictureList.vue'
 import PictureSearchForm from '@/components/PictureSearchForm.vue'
 import { ColorPicker } from 'vue3-colorpicker'
 import 'vue3-colorpicker/style.css'
 import BatchEditModal from '@/components/BatchEditModal.vue'
-import { EditOutlined } from '@ant-design/icons-vue'
+import { BarChartOutlined, EditOutlined, TeamOutlined } from '@ant-design/icons-vue'
+import { SPACE_PERMISSION_ENUM, SPACE_TYPE_ENUM, SPACE_TYPE_MAP } from '@/constant/spaceConstant'
 
 const props = defineProps<{
   id: string
@@ -79,13 +111,25 @@ const searchParams = ref<PictureQueryRequest>({
   sortField: 'createTime',
   sortOrder: 'desc',
 })
-
 const batchEditPictureModalRef = ref()
 
 onMounted(() => {
   fetchSpaceDetail()
   fetchPictureData()
 })
+
+// 通用权限检查函数
+function createPermissionChecker(permission: string) {
+  return computed(() => {
+    return (space.value.permissions ?? []).includes(permission)
+  })
+}
+
+// 定义权限检查
+const canManageSpaceUser = createPermissionChecker(SPACE_PERMISSION_ENUM.SPACE_USER_MANAGE)
+const canUploadPicture = createPermissionChecker(SPACE_PERMISSION_ENUM.PICTURE_UPLOAD)
+const canEditPicture = createPermissionChecker(SPACE_PERMISSION_ENUM.PICTURE_EDIT)
+const canDeletePicture = createPermissionChecker(SPACE_PERMISSION_ENUM.PICTURE_DELETE)
 
 const onPageChange = (page: number, pageSize: number) => {
   searchParams.value.current = page
@@ -166,6 +210,14 @@ const doBatchEdit = () => {
     batchEditPictureModalRef.value.openModal()
   }
 }
+
+watch(
+  () => props.id,
+  (newSpaceId) => {
+    fetchSpaceDetail()
+    fetchPictureData()
+  },
+)
 </script>
 
 <style scoped>

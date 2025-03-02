@@ -1,6 +1,8 @@
 <template>
   <div id="add-space-batch-page">
-    <h2 style="margin-bottom: 1rem">Create Space</h2>
+    <h2 style="margin-bottom: 1rem">
+      {{ route.query?.id ? 'Update' : 'Create' }} {{ SPACE_TYPE_MAP[spaceType] }}
+    </h2>
     <a-form layout="vertical" :model="formData" @finish="handleSubmit">
       <a-form-item label="Space name" name="spaceName">
         <a-input v-model:value="formData.spaceName" placeholder="Please input space name" />
@@ -38,10 +40,15 @@
 <script lang="ts" setup>
 import { type SpaceVo, type SpaceAddRequest } from '@/api/api'
 import { spaceController } from '@/api/apiFactory'
-import { SPACE_LEVEL_ENUM, SPACE_LEVEL_OPTIONS } from '@/constant/spaceConstant'
+import {
+  SPACE_LEVEL_ENUM,
+  SPACE_LEVEL_OPTIONS,
+  SPACE_TYPE_ENUM,
+  SPACE_TYPE_MAP,
+} from '@/constant/spaceConstant'
 import { formatSize } from '@/util'
 import { message } from 'ant-design-vue'
-import { onMounted, reactive, ref } from 'vue'
+import { computed, onMounted, reactive, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 const formData = reactive<SpaceAddRequest>({ spaceName: '', spaceLevel: SPACE_LEVEL_ENUM.COMMON })
@@ -52,6 +59,13 @@ const router = useRouter()
 const route = useRoute()
 
 const oldSpaceRef = ref<SpaceVo>()
+
+const spaceType = computed(() => {
+  if (route.query?.type) {
+    return Number(route.query.type)
+  }
+  return SPACE_TYPE_ENUM.PRIVATE
+})
 
 onMounted(() => {
   fetchSpaceLevelList()
@@ -70,6 +84,7 @@ const handleSubmit = async (request: SpaceAddRequest) => {
     if (spaceId) {
       res = await spaceController.updateSpace({ id: spaceId, ...request })
     } else {
+      request.spaceType = spaceType.value
       res = await spaceController.addSpace(request)
     }
 
