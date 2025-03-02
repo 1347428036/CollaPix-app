@@ -114,6 +114,7 @@ const pagination = computed(() => {
       searchParamRef.pageSize = pageSize
       fetchUserList()
     },
+    pageSizeOptions: ['10', '15', '20'],
   }
 })
 

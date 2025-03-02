@@ -1,11 +1,6 @@
 <template>
   <div>
-    <a-modal
-      v-model:visible="visible"
-      title="Batch Edit Pictures"
-      :footer="false"
-      @cancel="closeModal"
-    >
+    <a-modal v-model:open="open" title="Batch Edit Pictures" :footer="false" @cancel="closeModal">
       <a-typography-paragraph type="secondary"
         >* Only applies to pictures on the current page</a-typography-paragraph
       >
@@ -61,14 +56,14 @@ type Option = {
 }
 
 const props = withDefaults(defineProps<Props>(), {})
-const visible = ref(false)
+const open = ref(false)
 
 const openModal = () => {
-  visible.value = true
+  open.value = true
 }
 
 const closeModal = () => {
-  visible.value = false
+  open.value = false
 }
 
 const formData = reactive({

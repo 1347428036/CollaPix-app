@@ -37,7 +37,7 @@ httpSender.interceptors.response.use(
         const { useLoginUserStore } = await import('./stores/useLoginUserStore')
         const useUserStore = useLoginUserStore()
         useUserStore.clearUserInfoCache()
-        await message.warning('Please logn')
+        await message.warning('Please login')
         window.location.href = `/user/login?redirect=${window.location.href}`
       }
     }

@@ -43,11 +43,11 @@
           allow-clear
         />
       </a-form-item>
-      <a-form-item label="审核状态" name="reviewStatus">
+      <a-form-item label="Review Status" name="reviewStatus">
         <a-select
           v-model:value="searchParamRef.reviewStatus"
           :options="PIC_REVIEW_STATUS_OPTIONS"
-          placeholder="请输入审核状态"
+          placeholder="Select review status"
           style="min-width: 10rem"
           allow-clear
         />

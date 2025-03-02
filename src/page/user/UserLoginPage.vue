@@ -21,6 +21,7 @@
         <a-input-password
           v-model:value="formState.userPassword"
           placeholder="Please input your password"
+          autocomplete="true"
         >
           <template #prefix>
             <LockOutlined class="site-form-item-icon" />

@@ -35,6 +35,8 @@ import { RouterView } from 'vue-router'
   margin: 0 0 3.5rem 0;
   padding: 1rem 2rem 1rem 2rem;
   background-color: #ffff;
+  height: calc(100vh - 8rem);
+  overflow: auto;
 }
 #basicLayout .footer {
   background-color: white;

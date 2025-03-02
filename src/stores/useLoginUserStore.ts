@@ -2,6 +2,7 @@ import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import { type LoginUserVo } from '@/api/api'
 import { userController } from '@/api/apiFactory'
+import type { UserVo } from '@/api/api'
 
 const UNLOGIN_USER = {
   userName: '未登录',
@@ -29,7 +30,7 @@ export const useLoginUserStore = defineStore('loginUser', () => {
     return userInfoRef.value
   }
 
-  function getLoginUser() {
+  function getLoginUser(): UserVo {
     if (!userInfoRef.value || userInfoRef.value === UNLOGIN_USER) {
       fetchLoginUser()
     }

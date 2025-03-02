@@ -34,6 +34,7 @@
     <a-pagination
       v-model:current="searchParams.current"
       v-model:pageSize="searchParams.pageSize"
+      :page-size-options="pageSizeOptions"
       :total="total"
       @change="onPageChange"
       style="text-align: right"
@@ -52,6 +53,7 @@ import { onMounted, reactive, ref } from 'vue'
 const dataList = ref<PictureVo[]>([])
 const total = ref(0)
 const loading = ref(true)
+const pageSizeOptions = ref<string[]>(['10', '15', '20'])
 
 const categoryList = ref<string[]>([])
 const selectedCategory = ref<string>('all')
@@ -61,7 +63,7 @@ const selectedTagList = ref<boolean[]>([])
 // Search parameters
 const searchParams = reactive<PictureQueryRequest>({
   current: 1,
-  pageSize: 12,
+  pageSize: 10,
   sortField: 'createTime',
   sortOrder: 'desc',
 })
