@@ -53,7 +53,7 @@ import {
   PICTURE_EDIT_ACTION_ENUM,
   PICTURE_EDIT_MESSAGE_TYPE_ENUM,
 } from '@/constant/pictureConstant'
-import { SPACE_TYPE_ENUM } from '@/constant/spaceConstant'
+import { PUBLIC_SPACE_ID, SPACE_TYPE_ENUM } from '@/constant/spaceConstant'
 import { useLoginUserStore } from '@/stores/useLoginUserStore'
 import PictureEditWebSocket from '@/util'
 import { message } from 'ant-design-vue'
@@ -92,6 +92,9 @@ const canExitEdit = computed(() => {
 })
 // Can edit
 const canEdit = computed(() => {
+  if (PUBLIC_SPACE_ID === props.spaceId) {
+    return true
+  }
   return editingUser.value?.id === loginUser.id
 })
 // Whether it is a team space

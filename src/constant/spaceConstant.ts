@@ -1,3 +1,4 @@
+export const PUBLIC_SPACE_ID = '0'
 // Space level enum
 export const SPACE_LEVEL_ENUM = {
   COMMON: 0,

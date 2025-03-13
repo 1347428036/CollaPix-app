@@ -1,7 +1,7 @@
 <template>
   <div id="add-picture-page">
     <h2 style="margin-bottom: 1rem">{{ route.query?.id ? 'Update Picture' : 'Create Picture' }}</h2>
-    <a-typography-paragraph v-if="spaceId" type="secondary">
+    <a-typography-paragraph v-if="spaceId && spaceId !== PUBLIC_SPACE_ID" type="secondary">
       Save to space<a :href="`/space/${spaceId}`" target="_blank">{{ spaceId }}</a>
     </a-typography-paragraph>
 
@@ -89,6 +89,7 @@ import UrlPictureUpload from '@/components/UrlPictureUpload.vue'
 import ImageCropper from '@/components/ImageCropper.vue'
 import ImageOutPainting from '@/components/ImageOutPainting.vue'
 import { EditOutlined, FullscreenOutlined } from '@ant-design/icons-vue'
+import { PUBLIC_SPACE_ID } from '@/constant/spaceConstant'
 
 const pictureForm = reactive<PictureEditRequest>({})
 
