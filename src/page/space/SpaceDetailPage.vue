@@ -213,7 +213,7 @@ const doBatchEdit = () => {
 
 watch(
   () => props.id,
-  (newSpaceId) => {
+  () => {
     fetchSpaceDetail()
     fetchPictureData()
   },

@@ -152,6 +152,7 @@ const doDelete = async () => {
   const res = await pictureController.deletePicture({ id: id })
   if (res) {
     message.success('Delete success')
+    router.push('/')
   } else {
     message.error('Delete failed')
   }
