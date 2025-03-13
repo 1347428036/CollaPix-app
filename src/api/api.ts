@@ -1845,10 +1845,10 @@ export interface SearchPictureByColorRequest {
 export interface SearchPictureByPictureRequest {
     /**
      * 
-     * @type {number}
+     * @type {string}
      * @memberof SearchPictureByPictureRequest
      */
-    'pictureId'?: number;
+    'pictureId'?: string;
 }
 /**
  * 
@@ -2591,6 +2591,12 @@ export interface User {
      * @memberof User
      */
     'isDelete'?: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof User
+     */
+    'admin'?: boolean;
 }
 /**
  * 
@@ -2748,10 +2754,10 @@ export interface UserRegisterRequest {
 export interface UserUpdateRequest {
     /**
      * 
-     * @type {number}
+     * @type {string}
      * @memberof UserUpdateRequest
      */
-    'id'?: number;
+    'id'?: string;
     /**
      * 
      * @type {string}
@@ -4774,7 +4780,7 @@ export const SpaceControllerApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async addSpace(spaceAddRequest: SpaceAddRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CommonResponseLong>> {
+        async addSpace(spaceAddRequest: SpaceAddRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CommonResponseString>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.addSpace(spaceAddRequest, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['SpaceControllerApi.addSpace']?.[localVarOperationServerIndex]?.url;
@@ -4879,7 +4885,7 @@ export const SpaceControllerApiFactory = function (configuration?: Configuration
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        addSpace(spaceAddRequest: SpaceAddRequest, options?: RawAxiosRequestConfig): AxiosPromise<CommonResponseLong> {
+        addSpace(spaceAddRequest: SpaceAddRequest, options?: RawAxiosRequestConfig): AxiosPromise<CommonResponseString> {
             return localVarFp.addSpace(spaceAddRequest, options).then((request) => request(axios, basePath));
         },
         /**

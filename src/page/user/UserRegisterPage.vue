@@ -1,6 +1,6 @@
 <template>
   <div id="user-register">
-    <h2 class="title">Welcome to CloudPicture</h2>
+    <h2 class="title">Welcome to CollaPix</h2>
     <a-form
       :rules="rules"
       :model="formState"
@@ -96,7 +96,7 @@ const handleSubmit = (request: UserRegisterRequest) => {
   userController.userRegister(request).then((res) => {
     if (res) {
       message.success('register Success')
-      router.push({ path: '/', replace: true })
+      router.push({ path: '/user/login', replace: true })
       return
     }
     message.error('Register Failed')

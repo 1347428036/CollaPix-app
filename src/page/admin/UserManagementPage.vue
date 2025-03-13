@@ -20,7 +20,7 @@
       </a-form-item>
     </a-form>
     <div style="height: 2rem"></div>
-    <a-table :columns="columns" :data-source="dataRef" :pagination="pagination">
+    <a-table :columns="columns" :data-source="dataRef" :pagination="pagination" :loading="loading">
       <template #bodyCell="{ column, record }">
         <template v-if="column.dataIndex === 'userAvatar'">
           <img :src="record.userAvatar" :width="60" />
@@ -94,6 +94,7 @@ const columns = [
 
 const dataRef = ref<UserVo[]>([])
 const totalRef = ref(0)
+const loading = ref(false)
 const searchParamRef = reactive<UserQueryRequest>({
   current: 1,
   pageSize: 10,
@@ -119,9 +120,11 @@ const pagination = computed(() => {
 })
 
 const fetchUserList = async () => {
+  loading.value = true
   const res = (await userController.listUser(searchParamRef)) as PageUserVo
   dataRef.value = res.records ?? []
   totalRef.value = res.total ?? 0
+  loading.value = false
 }
 
 const doSearch = () => {

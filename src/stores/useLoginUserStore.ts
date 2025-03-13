@@ -5,7 +5,7 @@ import { userController } from '@/api/apiFactory'
 import type { UserVo } from '@/api/api'
 
 const UNLOGIN_USER = {
-  userName: '未登录',
+  userName: 'Unlogin',
   userAvatar: '',
 }
 const USER_INFO_KEY = 'loginUser'

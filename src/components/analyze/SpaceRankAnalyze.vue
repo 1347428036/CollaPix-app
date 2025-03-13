@@ -20,14 +20,11 @@ import VChart from 'vue-echarts'
 import 'echarts'
 
 interface Props {
-  queryAll?: boolean
-  queryPublic?: boolean
-  spaceId?: string
+  topN?: number
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  queryAll: false,
-  queryPublic: false,
+  topN: 10,
 })
 
 const dataList = ref<SpaceVo[]>([])
@@ -62,11 +59,9 @@ onUnmounted(() => {
 
 const fetchData = async () => {
   loading.value = true
-  const res = await spaceAnalyzeController.getSpaceRankAnalyze({
-    queryAll: props.queryAll,
-    queryPublic: props.queryPublic,
-    spaceId: props.spaceId,
-  })
+  const res = (await spaceAnalyzeController.getSpaceRankAnalyze({
+    topN: props.topN,
+  })) as unknown as SpaceVo[]
   if (res) {
     dataList.value = res ?? []
   } else {
@@ -77,7 +72,7 @@ const fetchData = async () => {
 
 const options = computed(() => {
   const spaceNames = dataList.value.map((item) => item.spaceName)
-  const usageData = dataList.value.map((item) => (item.totalSize / (1024 * 1024)).toFixed(2))
+  const usageData = dataList.value.map((item) => ((item.totalSize ?? 0) / (1024 * 1024)).toFixed(2))
 
   return {
     tooltip: { trigger: 'axis' },

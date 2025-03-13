@@ -63,6 +63,7 @@
       :columns="columns"
       :data-source="dataRef"
       :pagination="pagination"
+      :loading="loading"
       :scroll="{ x: 'max-content', y: 'calc(100vh - 27rem)' }"
     >
       <template #bodyCell="{ column, record }">
@@ -92,7 +93,12 @@
             >
               Analyze
             </a-button>
-            <a-button type="link" size="small" :href="`/space/add?id=${record.id}`" target="_blank">
+            <a-button
+              type="link"
+              size="small"
+              :href="`/space/add?id=${record.id}&type=${record.spaceType}`"
+              target="_blank"
+            >
               Edit
             </a-button>
             <a-button type="link" size="small" danger @click="doDelete(record.id)">Delete</a-button>
@@ -167,6 +173,7 @@ const columns = [
 
 const dataRef = ref<SpaceVo[]>([])
 const totalRef = ref(0)
+const loading = ref(false)
 const searchParamRef = reactive<SpaceQueryRequest>({
   current: 1,
   pageSize: 5,
@@ -194,9 +201,11 @@ onMounted(() => {
 })
 
 const fetchSpaceList = async () => {
+  loading.value = true
   const res = (await spaceController.listSpaceByPage(searchParamRef)) as PageSpaceVo
   dataRef.value = res.records ?? []
   totalRef.value = res.total ?? 0
+  loading.value = false
 }
 
 const doSearch = () => {
@@ -205,7 +214,7 @@ const doSearch = () => {
 }
 
 const doDelete = async (id: string) => {
-  await spaceController.deleteSpacec({ id: id })
+  await spaceController.deleteSpace({ id: id })
   message.success('Delete Success')
   fetchSpaceList()
 }

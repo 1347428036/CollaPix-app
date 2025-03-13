@@ -63,11 +63,11 @@ onUnmounted(() => {
 
 const fetchData = async () => {
   loading.value = true
-  const res = await spaceAnalyzeController.getSpaceCategoryAnalyze({
+  const res = (await spaceAnalyzeController.getSpaceCategoryAnalyze({
     queryAll: props.queryAll,
     queryPublic: props.queryPublic,
     spaceId: props.spaceId,
-  })
+  })) as unknown as SpaceCategoryAnalyzeResponse[]
   if (res) {
     dataList.value = res ?? []
   } else {

@@ -1,4 +1,4 @@
-# CloudPicture-app
+# CollaPix-app
 
 This template should help get you started developing with Vue 3 in Vite.
 
@@ -45,5 +45,5 @@ npm run lint
 ### Generate API code from OpenAPI specification
 
 ```sh
-openapi-generator-cli generate --skip-validate-spec -i http://localhost:8123/api/v3/api-docs/CloudPicture -g typescript-axios -o ./generated
+openapi-generator-cli generate --skip-validate-spec -i http://localhost:8123/api/v3/api-docs/CollaPix -g typescript-axios -o ./generated
 ```
