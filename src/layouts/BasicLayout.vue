@@ -11,7 +11,7 @@
         </a-layout-content>
       </a-layout>
 
-      <a-layout-footer class="footer"><span>CloudPicture</span></a-layout-footer>
+      <a-layout-footer class="footer"><span>CollaPix</span></a-layout-footer>
     </a-layout>
   </div>
 </template>

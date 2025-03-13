@@ -5,7 +5,7 @@
         <RouterLink to="/">
           <div class="title-bar">
             <img class="image" src="@/assets/Cloud-Picture-logo.png" alt="logo" />
-            <div class="title">CloudPicture</div>
+            <div class="title">CollaPix</div>
           </div>
         </RouterLink></a-col
       >
