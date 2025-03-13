@@ -400,3 +400,4 @@ FodyWeavers.xsd
 generated/
 openapitools.json
 dist/
+.vscode/
