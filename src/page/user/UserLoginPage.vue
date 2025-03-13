@@ -1,6 +1,6 @@
 <template>
   <div id="user-login">
-    <h2 class="title">Welcome to CloudPicture</h2>
+    <h2 class="title">Login to CollaPix</h2>
     <a-form
       :rules="rules"
       :model="formState"

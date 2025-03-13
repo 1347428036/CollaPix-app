@@ -66,13 +66,6 @@
       <a-form-item label="Heigh" name="picHeight">
         <a-input-number v-model:value="searchParamRef.picHeight" />
       </a-form-item>
-      <a-form-item label="Format" name="picFormat">
-        <a-input
-          v-model:value="searchParamRef.picFormat"
-          placeholder="Please input picture format"
-          allow-clear
-        />
-      </a-form-item>
       <a-form-item>
         <a-space>
           <a-button type="primary" html-type="submit">Search</a-button>

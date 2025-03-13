@@ -62,6 +62,7 @@
       :columns="columns"
       :data-source="dataRef"
       :pagination="pagination"
+      :loading="loading"
       :scroll="{ x: 'max-content', y: 'calc(100vh - 27rem)' }"
     >
       <template #bodyCell="{ column, record }">
@@ -204,6 +205,7 @@ const columns = [
 
 const dataRef = ref<PictureVo[]>([])
 const totalRef = ref(0)
+const loading = ref(false)
 const searchParamRef = reactive<PictureQueryRequest>({
   current: 1,
   pageSize: 5,
@@ -232,9 +234,11 @@ onMounted(() => {
 })
 
 const fetchPictureList = async () => {
+  loading.value = true
   const res = (await pictureController.listPictureByPage(searchParamRef)) as PagePictureVo
   dataRef.value = res.records ?? []
   totalRef.value = res.total ?? 0
+  loading.value = false
 }
 
 const doSearch = () => {

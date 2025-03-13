@@ -81,18 +81,20 @@ const handleSubmit = async (request: SpaceAddRequest) => {
   const spaceId = oldSpaceRef.value?.id
   let res
   try {
+    let responseSpaceId = spaceId
     if (spaceId) {
       res = await spaceController.updateSpace({ id: spaceId, ...request })
     } else {
       request.spaceType = spaceType.value
       res = await spaceController.addSpace(request)
+      responseSpaceId = res as unknown as string
     }
 
     if (res) {
       message.success('Create or Update Success')
       // Jump to home page
       router.push({
-        path: `/space/${res}`,
+        path: `/space/${responseSpaceId}`,
       })
     } else {
       message.error('Create or Update space failed')

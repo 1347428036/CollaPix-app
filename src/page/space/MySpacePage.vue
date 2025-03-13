@@ -38,7 +38,7 @@ const checkUserSpace = async () => {
   if (res) {
     if (res.records && res.records.length > 0) {
       const space = res.records[0]
-      router.replace(`/space/${space.id}`)
+      router.replace(`/space/${space.id}?spaceType=${SPACE_TYPE_ENUM.PRIVATE}`)
     } else {
       router.replace('/space/add')
       message.warn('Please create a space first')

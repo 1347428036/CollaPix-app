@@ -75,11 +75,19 @@ const router = useRouter()
 const current = ref<string[]>([])
 // Listen to route changes and update the currently selected menu
 router.afterEach((to) => {
-  current.value = [to.path]
+  const spaceType = to.query.spaceType
+  if (typeof spaceType === 'string' && Number.parseInt(spaceType) === SPACE_TYPE_ENUM.PRIVATE) {
+    current.value = ['/space/my']
+    return
+  }
+  current.value = [to.fullPath]
 })
 
 // Route navigation event
 const doMenuClick = ({ key }: { key: string }) => {
+  if (key === current.value[0]) {
+    return
+  }
   router.push(key)
 }
 
