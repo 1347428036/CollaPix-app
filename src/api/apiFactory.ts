@@ -5,7 +5,7 @@ import { SpaceControllerApi } from './api.ts'
 import { SpaceAnalyzeControllerApi } from './api.ts'
 import { SpaceUserControllerApi } from './api.ts'
 
-const BASE_URL = import.meta.env.VITE_BASE_URL
+const BASE_URL = import.meta.env.VITE_BASE_URI
 
 export const userController: UserControllerApi = new UserControllerApi(
   undefined,
