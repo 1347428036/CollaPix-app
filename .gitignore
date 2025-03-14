@@ -401,3 +401,5 @@ generated/
 openapitools.json
 dist/
 .vscode/
+
+.env.*
