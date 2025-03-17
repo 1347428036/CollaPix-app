@@ -106,7 +106,9 @@ const handleSubmit = async (values: PictureEditByBatchRequest) => {
   }
   try {
     const res = await pictureController.editPictureByBatch({
-      pictureIdList: props.pictureList.map((picture) => picture.id),
+      pictureIdList: props.pictureList
+        .map((picture) => picture.id)
+        .filter((id): id is string => id !== undefined),
       spaceId: props.spaceId,
       ...values,
     })

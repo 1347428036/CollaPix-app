@@ -11,8 +11,7 @@
           type="primary"
           ghost
           :icon="h(TeamOutlined)"
-          :href="`/space/user/management/${id}`"
-          target="_blank"
+          @click="openSpaceUserManagementModal"
         >
           Member management
         </a-button>
@@ -71,6 +70,17 @@
       :pictureList="dataList"
       :onSuccess="onBatchEditPictureSuccess"
     />
+
+    <!-- Space User Management Modal -->
+    <a-modal
+      v-model:visible="isSpaceUserManagementModalVisible"
+      title="Member Management"
+      width="80%"
+      :footer="null"
+      @cancel="closeSpaceUserManagementModal"
+    >
+      <SpaceUserManagementPage :spaceId="id" />
+    </a-modal>
   </div>
 </template>
 
@@ -85,6 +95,7 @@ import PictureSearchForm from '@/components/PictureSearchForm.vue'
 import { ColorPicker } from 'vue3-colorpicker'
 import 'vue3-colorpicker/style.css'
 import BatchEditModal from '@/components/BatchEditModal.vue'
+import SpaceUserManagementPage from '@/page/admin/SpaceUserManagementPage.vue'
 import { BarChartOutlined, EditOutlined, TeamOutlined } from '@ant-design/icons-vue'
 import { SPACE_PERMISSION_ENUM, SPACE_TYPE_ENUM, SPACE_TYPE_MAP } from '@/constant/spaceConstant'
 
@@ -209,6 +220,17 @@ const doBatchEdit = () => {
   if (batchEditPictureModalRef.value) {
     batchEditPictureModalRef.value.openModal()
   }
+}
+
+// Space User Management Modal Logic
+const isSpaceUserManagementModalVisible = ref(false)
+
+const openSpaceUserManagementModal = () => {
+  isSpaceUserManagementModalVisible.value = true
+}
+
+const closeSpaceUserManagementModal = () => {
+  isSpaceUserManagementModalVisible.value = false
 }
 
 watch(
