@@ -29,23 +29,38 @@
               <template #overlay>
                 <a-menu>
                   <a-menu-item>
-                    <router-link to="/space/my"><UserOutlined /> My Space</router-link>
+                    <router-link to="/space/my">
+                      <a-button type="link" :icon="h(UserOutlined)"
+                        >&nbsp; {{ $t('mySpace') }}
+                      </a-button>
+                    </router-link>
                   </a-menu-item>
                   <a-menu-item>
-                    <a href="javascript:;" @click="doLogout"><LogoutOutlined /> Logout</a>
+                    <router-link to="/user/settings">
+                      <a-button type="link" :icon="h(SettingOutlined)">
+                        &nbsp;{{ $t('settings') }}</a-button
+                      >
+                    </router-link>
+                  </a-menu-item>
+                  <a-menu-item>
+                    <a-button type="link" :icon="h(LogoutOutlined)" @click="doLogout" danger>
+                      &nbsp;{{ $t('logout') }}</a-button
+                    >
                   </a-menu-item>
                 </a-menu>
               </template>
             </a-dropdown>
           </div>
-          <div v-else><a-button type="primary" href="/user/login">Login</a-button></div>
+          <div v-else>
+            <a-button type="primary" href="/user/login">{{ $t('login') }}</a-button>
+          </div>
         </div>
       </a-col>
     </a-row>
   </div>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { computed, h, ref } from 'vue'
 import {
   FileImageOutlined,
@@ -53,48 +68,51 @@ import {
   HomeOutlined,
   UserOutlined,
   LogoutOutlined,
+  SettingOutlined,
 } from '@ant-design/icons-vue'
 import type { MenuProps } from 'ant-design-vue'
 import { useRouter } from 'vue-router'
 import { useLoginUserStore } from '@/stores/useLoginUserStore'
+import { useI18n } from 'vue-i18n'
 
+const { t } = useI18n()
 const loginUserStore = useLoginUserStore()
 const userInfo = computed(() => loginUserStore.getLoginUser())
 const defaultItems = ref<MenuProps['items']>([
   {
     key: '/',
     icon: () => h(HomeOutlined),
-    label: 'Home',
-    title: 'Home',
+    label: 'home',
+    title: 'home',
   },
   {
     key: '/picture/add',
     icon: () => h(FileImageOutlined),
-    label: 'Create Picture',
-    title: 'Create Picture',
+    label: 'createPicture',
+    title: 'createPicture',
   },
   {
     key: '/admin/user-management',
     icon: () => h(UserOutlined),
-    label: 'User Management',
-    title: 'User Management',
+    label: 'userManagement',
+    title: 'userManagement',
   },
   {
     key: '/admin/picture-management',
     icon: () => h(FileImageOutlined),
-    label: 'Picture Management',
-    title: 'Picture Management',
+    label: 'pictureManagement',
+    title: 'pictureManagement',
   },
   {
     key: '/admin/space-management',
     icon: () => h(FolderOutlined),
-    label: 'Space Management',
-    title: 'Space Management',
+    label: 'spaceManagement',
+    title: 'spaceManagement',
   },
   {
     key: '/about',
-    label: 'About',
-    title: 'About',
+    label: 'about',
+    title: 'about',
   },
 ])
 
@@ -112,15 +130,25 @@ const items = computed(() => {
 })
 
 const filterMenu = (menus = [] as MenuProps['items']) => {
-  return menus?.filter((item) => {
-    if (typeof item?.key === 'string' && item?.key?.startsWith('/admin')) {
-      if (!userInfo.value || userInfo.value.userRole !== 'admin') {
-        return false
+  return menus
+    ?.filter((item) => {
+      if (typeof item?.key === 'string' && item?.key?.startsWith('/admin')) {
+        if (!userInfo.value || userInfo.value.userRole !== 'admin') {
+          return false
+        }
       }
-    }
 
-    return true
-  })
+      return true
+    })
+    .map((item) => {
+      if (item && 'label' in item && 'title' in item) {
+        return {
+          ...item,
+          label: t(item.label),
+          title: t(item.title!),
+        }
+      }
+    })
 }
 
 const doMenueClick = ({ key }: { key: string }) => {

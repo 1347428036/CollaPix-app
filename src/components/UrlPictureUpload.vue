@@ -4,10 +4,10 @@
       <a-input
         v-model:value="fileUrl"
         style="width: calc(100% - 9rem)"
-        placeholder="Please input picture URL"
+        :placeholder="$t('pictureUploadPage.inputPictureUrl')"
       />
       <a-button type="primary" :loading="loading" @click="handleUpload" style="width: 9rem"
-        >Submit</a-button
+        >{{ $t('submit') }}</a-button
       >
     </a-input-group>
     <div class="img-wrapper">
@@ -20,6 +20,7 @@ import { ref } from 'vue'
 import { message } from 'ant-design-vue'
 import type { PictureUploadRequest, PictureVo } from '@/api/api.ts'
 import { pictureController } from '@/api/apiFactory'
+import { useI18n } from 'vue-i18n'
 
 interface Props {
   picture?: PictureVo
@@ -27,6 +28,7 @@ interface Props {
 }
 
 const props = defineProps<Props>()
+const { t } = useI18n()
 const loading = ref<boolean>(false)
 const fileUrl = ref<string>()
 
@@ -40,13 +42,13 @@ const handleUpload = async () => {
     if (props.picture) {
       params.id = props.picture.id
     }
-    const res = await pictureController.uploadPictureByUrl(params)
+    const res = await pictureController.uploadPictureByUrl(params) as PictureVo
     if (res) {
-      message.success('Upload success')
+      message.success(t('pictureUploadPage.pictureUploadSuccess'))
       // Pass the uploaded picture information to the parent component
       props.onSuccess?.(res)
     } else {
-      message.error('Upload failed')
+      message.error(t('pictureUploadPage.pictureUploadFailed'))
     }
   } finally {
     loading.value = false

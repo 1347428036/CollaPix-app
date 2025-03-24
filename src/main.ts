@@ -7,12 +7,24 @@ import 'ant-design-vue/dist/reset.css'
 import '@/access.ts'
 import VueCropper from 'vue-cropper'
 import 'vue-cropper/dist/index.css'
+import { createI18n } from 'vue-i18n'
+import zh from '@/i18n/zh'
+import en from '@/i18n/en'
 
+const i18n = createI18n({
+  locale: 'en',
+  legacy: false,
+  messages: {
+    zh,
+    en
+  }
+})
 const app = createApp(App)
 
 app.use(createPinia())
 app.use(router)
 app.use(Antd)
 app.use(VueCropper)
+app.use(i18n)
 
 app.mount('#app')

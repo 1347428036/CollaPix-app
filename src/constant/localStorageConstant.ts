@@ -1,0 +1,1 @@
+export const KEY_LANG = 'locale.lang'

@@ -3,9 +3,9 @@
     <!-- Search Bar -->
     <div class="search-bar">
       <a-input-search
-        placeholder="Search from a vast collection of images"
+        :placeholder="$t('searchFromImages')"
         v-model:value="searchParams.searchText"
-        enter-button="Search"
+        :enter-button="$t('search')"
         size="large"
         @search="doSearch"
       />

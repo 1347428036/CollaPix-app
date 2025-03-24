@@ -3,50 +3,50 @@
     <a-row :gutter="[16, 16]">
       <!-- Image Display Area -->
       <a-col :sm="24" :md="16" :xl="18">
-        <a-card title="Image Preview">
+        <a-card :title="$t('imagePreview')">
           <a-image style="max-height: 36rem; object-fit: contain" :src="picture.url" />
         </a-card>
       </a-col>
       <!-- Image Information Area -->
       <a-col :sm="24" :md="8" :xl="6">
-        <a-card title="Image Information">
+        <a-card :title="$t('imageInformation')">
           <a-descriptions :column="1">
-            <a-descriptions-item label="Author">
+            <a-descriptions-item :label="$t('author')">
               <a-space>
                 <a-avatar :size="24" :src="picture.user?.userAvatar" />
                 <div>{{ picture.user?.userName }}</div>
               </a-space>
             </a-descriptions-item>
-            <a-descriptions-item label="Name">
-              {{ picture.name ?? 'Unnamed' }}
+            <a-descriptions-item :label="$t('name')">
+              {{ picture.name ?? $t('unnamed') }}
             </a-descriptions-item>
-            <a-descriptions-item label="Introduction">
+            <a-descriptions-item :label="$t('introduction')">
               {{ picture.introduction ?? '-' }}
             </a-descriptions-item>
-            <a-descriptions-item label="Category">
-              {{ picture.category ?? 'Default' }}
+            <a-descriptions-item :label="$t('category')">
+              {{ picture.category ?? $t('default') }}
             </a-descriptions-item>
-            <a-descriptions-item label="Tags">
+            <a-descriptions-item :label="$t('tags')">
               <a-tag v-for="tag in picture.tags" :key="tag">
                 {{ tag }}
               </a-tag>
             </a-descriptions-item>
-            <a-descriptions-item label="Format">
+            <a-descriptions-item :label="$t('format')">
               {{ picture.picFormat ?? '-' }}
             </a-descriptions-item>
-            <a-descriptions-item label="Width">
+            <a-descriptions-item :label="$t('width')">
               {{ picture.picWidth ?? '-' }}
             </a-descriptions-item>
-            <a-descriptions-item label="Height">
+            <a-descriptions-item :label="$t('height')">
               {{ picture.picHeight ?? '-' }}
             </a-descriptions-item>
-            <a-descriptions-item label="Aspect Ratio">
+            <a-descriptions-item :label="$t('aspectRatio')">
               {{ picture.picScale ?? '-' }}
             </a-descriptions-item>
-            <a-descriptions-item label="Size">
+            <a-descriptions-item :label="$t('size')">
               {{ formatSize(picture.picSize) }}
             </a-descriptions-item>
-            <a-descriptions-item label="Dominaint Color">
+            <a-descriptions-item :label="$t('dominantColor')">
               <a-space>
                 {{ picture.picColor ?? '-' }}
                 <div
@@ -62,25 +62,25 @@
           </a-descriptions>
           <a-space wrap>
             <a-button type="primary" @click="doDownload">
-              Free Download
+              {{ $t('freeDownload') }}
               <template #icon>
                 <DownloadOutlined />
               </template>
             </a-button>
             <a-button type="primary" ghost @click="doShare">
-              Share
+              {{ $t('share') }}
               <template #icon>
                 <ShareAltOutlined />
               </template>
             </a-button>
             <a-button v-if="canEdit" type="default" @click="doEdit">
-              Edit
+              {{ $t('edit') }}
               <template #icon>
                 <EditOutlined />
               </template>
             </a-button>
             <a-button v-if="canDelete" danger @click="doDelete">
-              Delete
+              {{ $t('delete') }}
               <template #icon>
                 <DeleteOutlined />
               </template>
@@ -89,7 +89,7 @@
         </a-card>
       </a-col>
     </a-row>
-    <ShareModal title="Share picture" :link="shareLink" ref="shareModalRef" />
+    <ShareModal :title="$t('sharePicture')" :link="shareLink" ref="shareModalRef" />
   </div>
 </template>
 

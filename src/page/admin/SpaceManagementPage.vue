@@ -1,14 +1,14 @@
 <template>
   <div id="space-management-page">
     <a-flex justify="space-between">
-      <h2>Space management</h2>
+      <h2>{{ $t('spaceManagementPage.title') }}</h2>
       <a-space>
-        <a-button type="primary" href="/space/add" target="_blank">+ Create Space</a-button>
+        <a-button type="primary" href="/space/add" target="_blank">+ {{ $t('spaceManagementPage.createSpaceButton') }}</a-button>
         <a-button type="primary" ghost href="/analyze/space?queryPublic=1" target="_blank"
-          >Analyze Public Space</a-button
+          >{{ $t('spaceManagementPage.analyzePublicSpaceButton') }}</a-button
         >
         <a-button type="primary" ghost href="/analyze/space?queryAll=1" target="_blank"
-          >Analyze All Space</a-button
+          >{{ $t('spaceManagementPage.analyzeAllSpaceButton') }}</a-button
         >
       </a-space>
     </a-flex>
@@ -20,42 +20,42 @@
       autocomplete="off"
       @finish="doSearch"
     >
-      <a-form-item label="Space name" name="spaceName">
+      <a-form-item :label="$t('spaceNameLabel')" name="spaceName">
         <a-input
           v-model:value="searchParamRef.spaceName"
           allow-clear
-          placeholder="Input space name"
+          :placeholder="$t('spaceNamePlaceholder')"
         >
         </a-input>
       </a-form-item>
-      <a-form-item label="Space Level" name="spaceLevel">
+      <a-form-item :label="$t('spaceLevelLabel')" name="spaceLevel">
         <a-select
           v-model:value="searchParamRef.spaceLevel"
           :options="SPACE_LEVEL_OPTIONS"
           allow-clear
           style="min-width: 10rem"
-          placeholder="Select space level"
+          :placeholder="$t('spaceLevelPlaceholder')"
         >
         </a-select>
       </a-form-item>
-      <a-form-item label="Space Type" name="spaceType">
+      <a-form-item :label="$t('spaceManagementPage.spaceTypeLabel')" name="spaceType">
         <a-select
           v-model:value="searchParamRef.spaceType"
           :options="SPACE_TYPE_OPTIONS"
-          placeholder="Select space type"
+          :placeholder="$t('spaceManagementPage.spaceTypePlaceholder')"
           style="min-width: 10rem"
           allow-clear
         />
       </a-form-item>
-      <a-form-item label="User ID" name="userId">
+      <a-form-item :label="$t('spaceManagementPage.userIdLabel')" name="userId">
         <a-input
           v-model:value="searchParamRef.userId"
-          placeholder="Please input user id"
+          :placeholder="$t('spaceManagementPage.userIdPlaceholder')"
           allow-clear
         />
       </a-form-item>
       <a-form-item>
-        <a-button type="primary" html-type="submit">Search</a-button>
+        <a-button type="primary" html-type="submit">{{ $t('search') }}</a-button>
       </a-form-item>
     </a-form>
     <div style="height: 2rem"></div>
@@ -91,7 +91,7 @@
               :href="`/analyze/space?spaceId=${record.id}`"
               target="_blank"
             >
-              Analyze
+              {{ $t('spaceManagementPage.analyzeButton') }}
             </a-button>
             <a-button
               type="link"
@@ -99,9 +99,9 @@
               :href="`/space/add?id=${record.id}&type=${record.spaceType}`"
               target="_blank"
             >
-              Edit
+              {{ $t('edit') }}
             </a-button>
-            <a-button type="link" size="small" danger @click="doDelete(record.id)">Delete</a-button>
+            <a-button type="link" size="small" danger @click="doDelete(record.id)">{{ $t('delete') }}</a-button>
           </a-space>
         </template>
       </template>
@@ -121,51 +121,54 @@ import {
   SPACE_TYPE_OPTIONS,
 } from '@/constant/spaceConstant'
 import { spaceController } from '@/api/apiFactory'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const columns = [
   {
-    title: 'ID',
+    title: t('id'),
     dataIndex: 'id',
     width: 80,
   },
   {
-    title: 'Space Name',
+    title: t('spaceNameLabel'),
     dataIndex: 'spaceName',
     width: 100,
   },
   {
-    title: 'Space Level',
+    title: t('spaceLevelLabel'),
     dataIndex: 'spaceLevel',
     width: 100,
   },
   {
-    title: 'Space Type',
+    title: t('spaceManagementPage.spaceTypeLabel'),
     dataIndex: 'spaceType',
     width: 100,
   },
   {
-    title: 'Space Use Info',
+    title: t('spaceManagementPage.spaceUseInfoLabel'),
     dataIndex: 'spaceUseInfo',
     ellipsis: true,
     width: 160,
   },
   {
-    title: 'User ID',
+    title: t('spaceManagementPage.userIdLabel'),
     dataIndex: 'userId',
     width: 80,
   },
   {
-    title: 'Create time',
+    title: t('createTime'),
     dataIndex: 'createTime',
     width: 160,
   },
   {
-    title: 'Edit time',
+    title: t('editTime'),
     dataIndex: 'editTime',
     width: 160,
   },
   {
-    title: 'Action',
+    title: t('action'),
     key: 'action',
     width: 160,
   },
@@ -187,7 +190,7 @@ const pagination = computed(() => {
     pageSize: searchParamRef.pageSize,
     total: totalRef.value,
     showSizeChanger: true,
-    showTotal: (total: number) => `Total ${total} items`,
+    showTotal: (total: number) => t('total') + `: ${total}`,
     onChange: (page: number, pageSize: number) => {
       searchParamRef.current = page
       searchParamRef.pageSize = pageSize

@@ -1,6 +1,6 @@
 <template>
   <div id="user-login">
-    <h2 class="title">Login to CollaPix</h2>
+    <h2 class="title">{{$t("login")}} Collapix</h2>
     <a-form
       :rules="rules"
       :model="formState"
@@ -10,7 +10,7 @@
       @finishFailed="onFinishFailed"
     >
       <a-form-item name="userAccount">
-        <a-input v-model:value="formState.userAccount" placeholder="Please input your account">
+        <a-input v-model:value="formState.userAccount" :placeholder="$t('userAccountPlaceholder')">
           <template #prefix>
             <UserOutlined class="site-form-item-icon" />
           </template>
@@ -20,7 +20,7 @@
       <a-form-item name="userPassword">
         <a-input-password
           v-model:value="formState.userPassword"
-          placeholder="Please input your password"
+          :placeholder="$t('userPasswordPlaceholder')"
           autocomplete="true"
         >
           <template #prefix>
@@ -32,16 +32,16 @@
       <a-form-item>
         <div class="tips">
           <div>
-            No account?
-            <RouterLink to="/user/register">register now!</RouterLink>
+            {{$t('noAccount')}}
+            <RouterLink to="/user/register">{{$t('registerNow')}}</RouterLink>
           </div>
-          <a class="login-form-forgot" href="">Forgot password</a>
+          <a class="login-form-forgot" href="">{{$t('forgotPassword')}}</a>
         </div>
       </a-form-item>
 
       <a-form-item>
         <a-button :disabled="disabled" type="primary" html-type="submit" class="login-form-button">
-          Log in
+          {{$t("login")}}
         </a-button>
       </a-form-item>
     </a-form>
@@ -57,27 +57,29 @@ import { useLoginUserStore } from '@/stores/useLoginUserStore'
 import router from '@/router'
 import { message } from 'ant-design-vue'
 import { userController } from '@/api/apiFactory'
+import { useI18n } from 'vue-i18n'
 
 const loginUserStore = useLoginUserStore()
+const { t } = useI18n()
 const formState = reactive<UserLoginRequest>({
   userAccount: '',
   userPassword: '',
 })
 const rules: Record<string, Rule[]> = {
   userAccount: [
-    { required: true, message: 'Please input your account!' },
-    { min: 6, message: 'Account must be at least 6 characters', trigger: 'blur' },
+    { required: true, message: t('userAccountRequired'), trigger: 'blur' },
+    { min: 6, message: t('userAccountMinLength'), trigger: 'blur' },
   ],
   userPassword: [
-    { required: true, message: 'Please input your password!', trigger: 'change' },
-    { min: 8, message: 'Password must be at least 8 characters', trigger: 'blur' },
+    { required: true, message: t('userPasswordRequired'), trigger: 'change' },
+    { min: 8, message: t('userPasswordMinLength'), trigger: 'blur' },
   ],
 }
 const handleSubmit = (values: UserLoginRequest) => {
   userController.userLogin(values).then((res) => {
     if (res) {
       loginUserStore.setLoginUser(res as LoginUserVo)
-      message.success('Login Success')
+      message.success(t('loginSuccess'))
       router.push({ path: '/', replace: true })
     }
   })

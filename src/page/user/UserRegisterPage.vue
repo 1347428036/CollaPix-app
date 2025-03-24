@@ -1,6 +1,6 @@
 <template>
   <div id="user-register">
-    <h2 class="title">Welcome to CollaPix</h2>
+    <h2 class="title">{{$t("registerTitle")}}</h2>
     <a-form
       :rules="rules"
       :model="formState"
@@ -10,7 +10,7 @@
       @finishFailed="onFinishFailed"
     >
       <a-form-item name="userAccount">
-        <a-input v-model:value="formState.userAccount" placeholder="Please input your account">
+        <a-input v-model:value="formState.userAccount" :placeholder="$t('registerAccountPlaceholder')">
           <template #prefix>
             <UserOutlined class="site-form-item-icon" />
           </template>
@@ -20,7 +20,7 @@
       <a-form-item name="userPassword">
         <a-input-password
           v-model:value="formState.userPassword"
-          placeholder="Please input your password"
+          :placeholder="$t('registerPasswordPlaceholder')"
         >
           <template #prefix>
             <LockOutlined class="site-form-item-icon" />
@@ -30,7 +30,7 @@
       <a-form-item name="checkPassword">
         <a-input-password
           v-model:value="formState.checkPassword"
-          placeholder="Please input your confirm password"
+          :placeholder="$t('confirmPasswordPlaceholder')"
         >
           <template #prefix>
             <LockOutlined class="site-form-item-icon" />
@@ -45,14 +45,14 @@
           html-type="submit"
           class="register-form-button"
         >
-          Log in
+          {{$t("registerButtonText")}}
         </a-button>
       </a-form-item>
       <a-form-item>
         <div class="tips">
           <div>
-            Have account?
-            <RouterLink to="/user/login">Login</RouterLink>
+            {{$t('haveAccount')}}
+            <RouterLink to="/user/login">{{$t('login')}}</RouterLink>
           </div>
         </div>
       </a-form-item>
@@ -67,7 +67,9 @@ import { UserControllerApi, type UserRegisterRequest } from '@/api/api'
 import type { Rule } from 'ant-design-vue/es/form'
 import router from '@/router'
 import { message } from 'ant-design-vue'
+import { useI18n } from 'vue-i18n'
 
+const {t} = useI18n()
 const userController = new UserControllerApi()
 const formState = reactive<UserRegisterRequest>({
   userAccount: '',
@@ -76,16 +78,16 @@ const formState = reactive<UserRegisterRequest>({
 })
 const rules: Record<string, Rule[]> = {
   userAccount: [
-    { required: true, message: 'Please input your account!' },
-    { min: 6, message: 'Account must be at least 6 characters', trigger: 'blur' },
+    { required: true, message: t('userAccountRequired'), trigger: 'blur' },
+    { min: 6, message: t('userAccountMinLength'), trigger: 'blur' },
   ],
   userPassword: [
-    { required: true, message: 'Please input your password!', trigger: 'change' },
-    { min: 8, message: 'Password must be at least 8 characters', trigger: 'blur' },
+    { required: true, message: t('userPasswordRequired'), trigger: 'change' },
+    { min: 8, message: t('userPasswordMinLength'), trigger: 'blur' },
   ],
   checkPassword: [
-    { required: true, message: 'Please input your password!', trigger: 'change' },
-    { min: 8, message: 'Confirm password must be at least 8 characters', trigger: 'blur' },
+    { required: true, message: t('userPasswordRequired'), trigger: 'change' },
+    { min: 8, message: t('userPasswordMinLength'), trigger: 'blur' },
   ],
 }
 const handleSubmit = (request: UserRegisterRequest) => {

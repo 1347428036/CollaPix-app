@@ -1,12 +1,10 @@
 <template>
   <div id="picture-management-page">
     <a-flex justify="space-between">
-      <h2>Picture management</h2>
+      <h2>{{ $t('pictureManagementPage.title') }}</h2>
       <a-space>
-        <a-button type="primary" href="/picture/add" target="_blank">+ Create Picture</a-button>
-        <a-button type="primary" href="/picture/add/batch" target="_blank" ghost
-          >+ Batch create picture</a-button
-        >
+        <a-button type="primary" href="/picture/add" target="_blank">{{ $t('pictureManagementPage.createPictureButton') }}</a-button>
+        <a-button type="primary" href="/picture/add/batch" target="_blank" ghost>{{ $t('pictureManagementPage.batchCreatePictureButton') }}</a-button>
       </a-space>
     </a-flex>
     <div style="margin-bottom: 2rem"></div>
@@ -17,44 +15,44 @@
       autocomplete="off"
       @finish="doSearch"
     >
-      <a-form-item label="Key words" name="keywords">
+      <a-form-item :label="$t('pictureManagementPage.keywordsLabel')" name="keywords">
         <a-input
           v-model:value="searchParamRef.searchText"
           allow-clear
-          placeholder="Input name or introduction"
+          :placeholder="$t('pictureManagementPage.keywordsPlaceholder')"
         >
         </a-input>
       </a-form-item>
 
-      <a-form-item label="Picture Cateogry" name="category">
+      <a-form-item :label="$t('pictureManagementPage.pictureCategoryLabel')" name="category">
         <a-input
           v-model:value="searchParamRef.category"
           allow-clear
-          placeholder="Input category name"
+          :placeholder="$t('pictureManagementPage.pictureCategoryPlaceholder')"
         >
         </a-input>
       </a-form-item>
-      <a-form-item label="Tag" name="tags">
+      <a-form-item :label="$t('pictureManagementPage.tagLabel')" name="tags">
         <a-select
           v-model:value="searchParamRef.tags"
           mode="tags"
-          placeholder="Input tags"
+          :placeholder="$t('pictureManagementPage.tagPlaceholder')"
           style="min-width: 10rem"
           allow-clear
         />
       </a-form-item>
-      <a-form-item label="Review Status" name="reviewStatus">
+      <a-form-item :label="$t('pictureManagementPage.reviewStatusLabel')" name="reviewStatus">
         <a-select
           v-model:value="searchParamRef.reviewStatus"
           :options="PIC_REVIEW_STATUS_OPTIONS"
-          placeholder="Select review status"
+          :placeholder="$t('pictureManagementPage.reviewStatusPlaceholder')"
           style="min-width: 10rem"
           allow-clear
         />
       </a-form-item>
 
       <a-form-item>
-        <a-button type="primary" html-type="submit">Search</a-button>
+        <a-button type="primary" html-type="submit">{{ $t('searchButton') }}</a-button>
       </a-form-item>
     </a-form>
     <div style="height: 2rem"></div>
@@ -80,16 +78,16 @@
           </a-space>
         </template>
         <template v-if="column.dataIndex === 'picInfo'">
-          <div>type: {{ record.picFormat }}</div>
-          <div>width: {{ record.picWidth }}</div>
-          <div>height: {{ record.picHeight }}</div>
-          <div>scale: {{ record.picScale }}</div>
-          <div>size: {{ formatSize(record.picSize) }}</div>
+          <div>{{ $t('pictureManagementPage.type') }}: {{ record.picFormat }}</div>
+          <div>{{ $t('width') }}: {{ record.picWidth }}</div>
+          <div>{{ $t('height') }}: {{ record.picHeight }}</div>
+          <div>{{ $t('pictureManagementPage.scale') }}: {{ record.picScale }}</div>
+          <div>{{ $t('size') }}: {{ formatSize(record.picSize) }}</div>
         </template>
         <template v-if="column.dataIndex === 'reviewInfo'">
-          <div>Review status: {{ PIC_REVIEW_STATUS_MAP[record.reviewStatus] }}</div>
-          <div>Review message: {{ record.reviewMessage }}</div>
-          <div>Reviewer: {{ record.reviewerId }}</div>
+          <div>{{ $t('pictureManagementPage.reviewStatus') }}: {{ PIC_REVIEW_STATUS_MAP[record.reviewStatus] }}</div>
+          <div>{{ $t('pictureManagementPage.reviewMessage') }}: {{ record.reviewMessage }}</div>
+          <div>{{ $t('pictureManagementPage.reviewer') }}: {{ record.reviewerId }}</div>
         </template>
 
         <template v-else-if="column.dataIndex === 'createTime'">
@@ -100,15 +98,13 @@
         </template>
         <template v-else-if="column.key === 'action'">
           <a-space wrap>
-            <a-button type="link" :href="`/picture/add?id=${record.id}`" target="_blank"
-              >Edit</a-button
-            >
+            <a-button type="link" :href="`/picture/add?id=${record.id}`" target="_blank">{{ $t('pictureManagementPage.editButton') }}</a-button>
             <a-button
               v-if="record.reviewStatus !== PIC_REVIEW_STATUS_ENUM.PASS"
               @click="handleReview(record, PIC_REVIEW_STATUS_ENUM.PASS)"
               type="link"
             >
-              Pass
+              {{ $t('pictureManagementPage.passButton') }}
             </a-button>
             <a-button
               v-if="record.reviewStatus !== PIC_REVIEW_STATUS_ENUM.REJECT"
@@ -116,9 +112,9 @@
               @click="handleReview(record, PIC_REVIEW_STATUS_ENUM.REJECT)"
               type="link"
             >
-              Reject
+              {{ $t('pictureManagementPage.rejectButton') }}
             </a-button>
-            <a-button type="link" danger @click="doDelete(record.id)">Delete</a-button>
+            <a-button type="link" danger @click="doDelete(record.id)">{{ $t('deleteButton') }}</a-button>
           </a-space>
         </template>
       </template>
@@ -138,66 +134,69 @@ import {
   PIC_REVIEW_STATUS_OPTIONS,
 } from '@/constant/pictureConstant'
 import { formatSize } from '@/util'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const columns = [
   {
-    title: 'ID',
+    title: t('id'),
     dataIndex: 'id',
     width: 80,
   },
   {
-    title: 'Picture',
+    title: t('pictureManagementPage.picture'),
     dataIndex: 'url',
     width: 80,
   },
   {
-    title: 'Name',
+    title: t('name'),
     dataIndex: 'name',
     width: 100,
   },
   {
-    title: 'Introduction',
+    title: t('introduction'),
     dataIndex: 'introduction',
     ellipsis: true,
     width: 160,
   },
   {
-    title: 'Category',
+    title: t('category'),
     dataIndex: 'category',
     width: 80,
   },
   {
-    title: 'Tags',
+    title: t('tags'),
     dataIndex: 'tags',
     width: 80,
   },
   {
-    title: 'Picture info',
+    title: t('pictureManagementPage.picInfo'),
     dataIndex: 'picInfo',
     width: 160,
   },
   {
-    title: 'Review info',
+    title: t('pictureManagementPage.reviewInfo'),
     dataIndex: 'reviewInfo',
     width: 160,
   },
   {
-    title: 'User ID',
+    title: t('pictureManagementPage.userId'),
     dataIndex: 'userId',
     width: 80,
   },
   {
-    title: 'Create time',
+    title: t('createTime'),
     dataIndex: 'createTime',
     width: 160,
   },
   {
-    title: 'Edit time',
+    title: t('editTime'),
     dataIndex: 'editTime',
     width: 160,
   },
   {
-    title: 'Action',
+    title: t('action'),
     key: 'action',
     width: 80,
   },
@@ -220,7 +219,7 @@ const pagination = computed(() => {
     total: totalRef.value,
     showSizeChanger: true,
     showQuickJumper: true,
-    showTotal: (total: number) => `Total ${total} items`,
+    showTotal: (total: number) => t('total') + `: ${total}`,
     onChange: (page: number, pageSize: number) => {
       searchParamRef.current = page
       searchParamRef.pageSize = pageSize

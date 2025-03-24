@@ -1,30 +1,30 @@
 <template>
   <div id="add-picture-batch-page">
-    <h2 style="margin-bottom: 1rem">Create Picture</h2>
+    <h2 style="margin-bottom: 1rem">{{ $t('addPictureBatchPage.createPicture') }}</h2>
     <a-form layout="vertical" :model="formData" @finish="handleSubmit">
-      <a-form-item label="Search Text" name="searchText">
-        <a-input v-model:value="formData.searchText" placeholder="Please input search text" />
+      <a-form-item :label="$t('searchText')" name="searchText">
+        <a-input v-model:value="formData.searchText" :placeholder="$t('searchText')" />
       </a-form-item>
-      <a-form-item label="Picture count" name="count">
+      <a-form-item :label="$t('pictureCount')" name="count">
         <a-input-number
           v-model:value="formData.count"
-          placeholder="Please input number"
+          :placeholder="$t('inputNumber')"
           style="min-width: 10rem"
           :min="1"
           :max="30"
         />
       </a-form-item>
-      <a-form-item label="Name prefix" name="namePrefix">
+      <a-form-item :label="$t('namePrefix')" name="namePrefix">
         <a-input
           v-model:value="formData.namePrefix"
-          placeholder="Please input name prefix, will auto add series number"
+          :placeholder="$t('addPictureBatchPage.namePrefixPlaceholder')"
           :options="categoryOptions"
           allowClear
         />
       </a-form-item>
       <a-form-item>
         <a-button type="primary" html-type="submit" style="width: 100%" :loading="loading"
-          >Execute Job</a-button
+          >{{ $t('executeJob') }}</a-button
         >
       </a-form-item>
     </a-form>

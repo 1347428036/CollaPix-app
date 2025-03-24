@@ -5,12 +5,13 @@
       :show-upload-list="false"
       :custom-request="handleUpload"
       :before-upload="beforeUpload"
+      maxCount="1"
     >
       <img v-if="imageUrl" :src="imageUrl" alt="picture" />
       <div v-else>
         <loading-outlined v-if="loading"></loading-outlined>
         <plus-outlined v-else></plus-outlined>
-        <div class="ant-upload-text">Click or Drag picture</div>
+        <div class="ant-upload-text">{{ $t('pictureUploadPage.clickOrDragPicture') }}</div>
       </div>
     </a-upload>
   </div>
@@ -22,6 +23,7 @@ import { message } from 'ant-design-vue'
 import type { UploadFile } from 'ant-design-vue'
 import type { PictureVo } from '@/api/api.ts'
 import { pictureController } from '@/api/apiFactory'
+import { useI18n } from 'vue-i18n'
 
 interface Props {
   picture?: PictureVo
@@ -30,6 +32,7 @@ interface Props {
 }
 
 const props = defineProps<Props>()
+const { t } = useI18n()
 const loading = ref<boolean>(false)
 const imageUrl = computed(() => props.picture?.url)
 /**
@@ -43,11 +46,11 @@ const handleUpload = async ({ file }: never) => {
 
     const res = await pictureController.uploadPicture(file, id, props.spaceId)
     if (res) {
-      message.success('Picture upload success')
+      message.success(t('pictureUploadPage.pictureUploadSuccess'))
       // Pass the uploaded image information to the parent component
       props.onSuccess?.(res as PictureVo)
     } else {
-      message.error('Picture upload failed')
+      message.error(t('pictureUploadPage.pictureUploadFailed'))
     }
   } finally {
     loading.value = false
@@ -61,11 +64,11 @@ const beforeUpload = (file: UploadFile) => {
 
   const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png'
   if (!isJpgOrPng) {
-    message.error('You can only upload JPG or PNG file!')
+    message.error(t('pictureUploadPage.onlyJpgOrPng'))
   }
   const isLt2M = file.size && file.size / 1024 / 1024 < 2
   if (!isLt2M) {
-    message.error('Image must smaller than 2MB!')
+    message.error(t('pictureUploadPage.imageMustSmallerThan2MB'))
   }
   return isJpgOrPng && isLt2M
 }

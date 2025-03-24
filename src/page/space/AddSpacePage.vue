@@ -1,36 +1,35 @@
 <template>
   <div id="add-space-batch-page">
     <h2 style="margin-bottom: 1rem">
-      {{ route.query?.id ? 'Update' : 'Create' }} {{ SPACE_TYPE_MAP[spaceType] }}
+      {{ route.query?.id ? $t('update') : $t('create') }} {{ SPACE_TYPE_MAP[spaceType] }}
     </h2>
     <a-form layout="vertical" :model="formData" @finish="handleSubmit">
-      <a-form-item label="Space name" name="spaceName">
-        <a-input v-model:value="formData.spaceName" placeholder="Please input space name" />
+      <a-form-item :label="$t('spaceNameLabel')" name="spaceName">
+        <a-input v-model:value="formData.spaceName" :placeholder="$t('spaceNamePlaceholder')" />
       </a-form-item>
-      <a-form-item label="Space Level" name="spaceLevel">
+      <a-form-item :label="$t('spaceLevelLabel')" name="spaceLevel">
         <a-select
           v-model:value="formData.spaceLevel"
           :options="SPACE_LEVEL_OPTIONS"
-          placeholder="Please select space level"
+          :placeholder="$t('spaceLevelPlaceholder')"
           style="min-width: 10rem"
           allow-clear
         />
       </a-form-item>
       <a-form-item>
         <a-button type="primary" html-type="submit" style="width: 100%" :loading="loading"
-          >Create or Update</a-button
+          >{{ $t('addSpacePage.createOrUpdateButton') }}</a-button
         >
       </a-form-item>
     </a-form>
-    <a-card title="Space level introduction">
+    <a-card :title="$t('addSpacePage.spaceLevelIntroductionTitle')">
       <a-typography-paragraph>
-        * Currently, only the basic version can be activated, if you need to upgrade the space,
-        please contact us
-        <a href="https://codefather.cn" target="_blank">Coder Chen</a>。
+        * {{ $t('addSpacePage.spaceLevelIntroductionText') }}
+        <a href="#" target="_blank">Coder Chen</a>。
       </a-typography-paragraph>
       <a-typography-paragraph v-for="(spaceLevel, index) in spaceLevelList" :key="index">
         <a-tag>{{ spaceLevel.text }}</a-tag
-        >： Size {{ formatSize(spaceLevel.maxSize) }}， Amount
+        >： {{ $t('size') }} {{ formatSize(spaceLevel.maxSize) }}， {{ $t('addSpacePage.amountLabel') }}
         {{ spaceLevel.maxCount }}
       </a-typography-paragraph>
     </a-card>
@@ -38,7 +37,7 @@
 </template>
 
 <script lang="ts" setup>
-import { type SpaceVo, type SpaceAddRequest } from '@/api/api'
+import { type SpaceVo, type SpaceAddRequest, type SpaceLevel } from '@/api/api'
 import { spaceController } from '@/api/apiFactory'
 import {
   SPACE_LEVEL_ENUM,
@@ -49,10 +48,12 @@ import {
 import { formatSize } from '@/util'
 import { message } from 'ant-design-vue'
 import { computed, onMounted, reactive, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
 
+const { t } = useI18n()
 const formData = reactive<SpaceAddRequest>({ spaceName: '', spaceLevel: SPACE_LEVEL_ENUM.COMMON })
-const spaceLevelList = ref<{ text: string; maxSize: number; maxCount: number }[]>([])
+const spaceLevelList = ref<{ text?: string; maxSize?: number; maxCount?: number }[]>([])
 
 const loading = ref(false)
 const router = useRouter()
@@ -91,13 +92,13 @@ const handleSubmit = async (request: SpaceAddRequest) => {
     }
 
     if (res) {
-      message.success('Create or Update Success')
+      message.success(t('addSpacePage.createOrUpdateSuccessMessage'))
       // Jump to home page
       router.push({
         path: `/space/${responseSpaceId}`,
       })
     } else {
-      message.error('Create or Update space failed')
+      message.error(t('addSpacePage.createOrUpdateErrorMessage'))
     }
   } finally {
     loading.value = false
@@ -105,11 +106,11 @@ const handleSubmit = async (request: SpaceAddRequest) => {
 }
 
 const fetchSpaceLevelList = async () => {
-  const res = await spaceController.listSpaceLevel()
+  const res = await spaceController.listSpaceLevel() as unknown as SpaceLevel[]
   if (res) {
     spaceLevelList.value = res
   } else {
-    message.error('Loading space level failed')
+    message.error(t('addSpacePage.loadSpaceLevelErrorMessage'))
   }
 }
 
@@ -122,7 +123,7 @@ const fetchOldSpace = async () => {
       formData.spaceName = res.spaceName
       formData.spaceLevel = res.spaceLevel
     } else {
-      message.error('Failed to load page details')
+      message.error(t('addSpacePage.loadPageDetailsErrorMessage'))
     }
   }
 }

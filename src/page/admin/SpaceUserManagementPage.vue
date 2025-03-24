@@ -1,13 +1,12 @@
 <template>
   <div id="space-user-management-page">
-    <h2>Team space user management</h2>
     <div style="margin-bottom: 2rem"></div>
     <a-form layout="inline" :model="formData" @finish="handleSubmit">
-      <a-form-item label="User ID" name="userId">
-        <a-input v-model:value="formData.userId" placeholder="please input user id" allow-clear />
+      <a-form-item :label="$t('userAccount')" name="userId">
+        <a-input v-model:value="formData.userId" :placeholder="$t('spaceUserManagementPage.addUserAccountPlaceholder')" allow-clear />
       </a-form-item>
       <a-form-item>
-        <a-button type="primary" html-type="submit">Add user</a-button>
+        <a-button type="primary" html-type="submit">{{ $t('spaceUserManagementPage.addUserButton') }}</a-button>
       </a-form-item>
     </a-form>
 
@@ -38,7 +37,7 @@
               danger
               @click="doDelete(record.id)"
               :disabled="record.userId === loginUser.id"
-              >Delete</a-button
+              >{{ $t('deleteButton') }}</a-button
             >
           </a-space>
         </template>
@@ -54,22 +53,25 @@ import type { SpaceUserAddRequest, SpaceUserVo } from '@/api/api'
 import { SPACE_ROLE_OPTIONS } from '@/constant/spaceConstant'
 import { spaceUserController } from '@/api/apiFactory'
 import { useLoginUserStore } from '@/stores/useLoginUserStore'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const columns = [
   {
-    title: 'User',
+    title: t('spaceUserManagementPage.user'),
     dataIndex: 'userInfo',
   },
   {
-    title: 'Role',
+    title: t('spaceUserManagementPage.role'),
     dataIndex: 'spaceRole',
   },
   {
-    title: 'Create Time',
+    title: t('createTime'),
     dataIndex: 'createTime',
   },
   {
-    title: 'Action',
+    title: t('action'),
     key: 'action',
   },
 ]
