@@ -1,36 +1,36 @@
 <template>
   <div>
-    <a-modal v-model:open="open" title="Batch Edit Pictures" :footer="false" @cancel="closeModal">
+    <a-modal v-model:open="open" :title="$t('batchEditPictures')" :footer="false" @cancel="closeModal">
       <a-typography-paragraph type="secondary"
-        >* Only applies to pictures on the current page</a-typography-paragraph
+        >{{ $t('onlyAppliesToCurrentPage') }}</a-typography-paragraph
       >
       <!-- Form items -->
       <a-form layout="vertical" :model="formData" @finish="handleSubmit">
-        <a-form-item label="Category" name="category">
+        <a-form-item :label="$t('tagLabel')" name="category">
           <a-auto-complete
             v-model:value="formData.category"
             :options="categoryOptions"
-            placeholder="Enter category"
+            :placeholder="$t('tagPlaceholder')"
             allowClear
           />
         </a-form-item>
-        <a-form-item label="Tags" name="tags">
+        <a-form-item :label="$t('tagLabel')" name="tags">
           <a-select
             v-model:value="formData.tags"
             :options="tagOptions"
             mode="tags"
-            placeholder="Enter tags"
+            :placeholder="$t('tagPlaceholder')"
             allowClear
           />
         </a-form-item>
-        <a-form-item label="Naming Rule" name="nameRule">
+        <a-form-item :label="$t('tagNamingRuleLabel')" name="nameRule">
           <a-input
             v-model:value="formData.nameRule"
-            placeholder="Enter naming rule, use {num} to dynamically generate"
+            :placeholder="$t('tagNamingRulePlaceholder')"
           />
         </a-form-item>
         <a-form-item>
-          <a-button type="primary" html-type="submit">Submit</a-button>
+          <a-button type="primary" html-type="submit">{{ $t('submit') }}</a-button>
         </a-form-item>
       </a-form>
     </a-modal>

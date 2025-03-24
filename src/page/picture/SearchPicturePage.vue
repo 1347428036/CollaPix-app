@@ -52,7 +52,7 @@ onMounted(() => {
 const fetchData = async () => {
   const res = await pictureController.searchPictureByPicture({
     pictureId: pictureId,
-  })
+  }) as unknown as ImageSearchResult[]
   if (res) {
     dataList.value = res ?? []
   } else {
@@ -63,7 +63,7 @@ const fetchData = async () => {
 // Fetch picture details
 const fetchPictureDetail = async () => {
   try {
-    const res = await pictureController.getPictureVoById(pictureId)
+    const res = await pictureController.getPictureVoById(pictureId) as PictureVo
     if (res) {
       picture.value = res
     } else {

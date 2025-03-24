@@ -1,11 +1,11 @@
 <template>
-  <a-modal v-model:open="open" title="Share picture" :footer="false" @cancel="closeModal">
-    <h4>Copy share link</h4>
+  <a-modal v-model:open="open" :title="$t('shareModal.title')" :footer="false" @cancel="closeModal">
+    <h4>{{ $t('shareModal.copyLink') }}</h4>
     <a-typography-link copyable>
       {{ link }}
     </a-typography-link>
     <div style="margin-bottom: 16px"></div>
-    <h4>Scan QR code to view on mobile</h4>
+    <h4>{{ $t('shareModal.scanQRCode') }}</h4>
     <a-qrcode :value="link" />
   </a-modal>
 </template>
@@ -25,7 +25,7 @@ interface Props {
  */
 const props = withDefaults(defineProps<Props>(), {
   title: () => 'Share',
-  link: () => 'https://laoyujianli.com/share/yupi',
+  link: () => 'https://collapix.esmiao.com',
 })
 
 // Whether the modal is visible

@@ -1,11 +1,11 @@
 <template>
   <div id="space-analyze-page">
     <h2>
-      Gallery space analyze -
-      <span v-if="queryAll"> All spaces </span>
-      <span v-else-if="queryPublic"> Public gallery </span>
+      {{ $t('spaceAnalyzePage.title') }} -
+      <span v-if="queryAll"> {{ $t('spaceAnalyzePage.allSpaces') }} </span>
+      <span v-else-if="queryPublic"> {{ $t('spaceAnalyzePage.publicGallery') }} </span>
       <span v-else>
-        <a :href="`/space/${spaceId}`" target="_blank">ID：{{ spaceId }}</a>
+        <a :href="`/space/${spaceId}`" target="_blank">{{ $t('id') }}：{{ spaceId }}</a>
       </span>
     </h2>
     <a-select
@@ -56,13 +56,10 @@ import SpaceTagAnalyze from '@/components/analyze/SpaceTagAnalyze.vue'
 import SpaceUsageAnalyze from '@/components/analyze/SpaceUsageAnalyze.vue'
 import SpaceUserAnalyze from '@/components/analyze/SpaceUserAnalyze.vue'
 import { useLoginUserStore } from '@/stores/useLoginUserStore'
-import { computed, ref, watch } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
-const route = useRoute()
-const router = useRouter()
-
-const options = [
+const options = ref([
   {
     label: 'Public Space',
     value: 'publicSpace',
@@ -75,21 +72,31 @@ const options = [
     label: 'My Space',
     value: 'mySpace',
   },
-]
+])
 
+const route = useRoute()
+const router = useRouter()
 const selectedOption = ref<string>('mySpace')
 const spaceId = computed(() => route.query.spaceId as string)
-
 const queryAll = computed(() => route.query.queryAll === '1')
 const queryPublic = computed(() => route.query.queryPublic === '1')
+const isAdmin = computed(() => loginUser.userRole === 'admin')
 
 const loginUserStore = useLoginUserStore()
 const loginUser = loginUserStore.getLoginUser()
 
-const isAdmin = computed(() => loginUser.userRole === 'admin')
+onMounted(() => {
+  if (!spaceId.value) {
+    options.value = options.value.filter((option) => {
+      if (option.value === 'mySpace') {
+        return false
+      }
+      return true
+    })
+  }
+})
 
 let updatingRoute = false
-
 watch(selectedOption, (newValue) => {
   if (updatingRoute) return
   updatingRoute = true

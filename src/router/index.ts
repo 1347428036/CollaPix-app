@@ -14,6 +14,7 @@ import SpaceDetailPage from '@/page/space/SpaceDetailPage.vue'
 import SearchPicturePage from '@/page/picture/SearchPicturePage.vue'
 import SpaceAnalyzePage from '@/page/space/SpaceAnalyzePage.vue'
 import SpaceUserManagementPage from '@/page/admin/SpaceUserManagementPage.vue'
+import UserSettingsPage from '@/page/user/UserSettingsPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -96,7 +97,11 @@ const router = createRouter({
       component: SpaceUserManagementPage,
       props: true,
     },
-
+    {
+      path: '/user/settings',
+      name: 'User settings',
+      component: UserSettingsPage,
+    },
     {
       path: '/about',
       name: 'about',

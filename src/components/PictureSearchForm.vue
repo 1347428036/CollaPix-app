@@ -7,69 +7,69 @@
       autocomplete="off"
       @finish="doSearch"
     >
-      <a-form-item label="Key words" name="keywords">
+      <a-form-item :label="$t('keywords')" name="keywords">
         <a-input
           v-model:value="searchParamRef.searchText"
           allow-clear
-          placeholder="Input name or introduction"
+          :placeholder="$t('inputNameOrIntroduction')"
         >
         </a-input>
       </a-form-item>
 
-      <a-form-item label="Picture Cateogry" name="category">
+      <a-form-item :label="$t('pictureCategory')" name="category">
         <a-select
           v-model:value="searchParamRef.category"
           :options="categoryOptions"
           allow-clear
-          placeholder="Input category name"
+          :placeholder="$t('inputCategoryName')"
         >
         </a-select>
       </a-form-item>
-      <a-form-item label="Tag" name="tags">
+      <a-form-item :label="$t('tag')" name="tags">
         <a-select
           v-model:value="searchParamRef.tags"
           mode="tags"
-          placeholder="Input tags"
+          :placeholder="$t('inputTags')"
           style="min-width: 10rem"
           allow-clear
           :options="tagOptions"
         />
       </a-form-item>
-      <a-form-item label="Edit time" name="editTime">
+      <a-form-item :label="$t('editTime')" name="editTime">
         <a-range-picker
           style="width: 21rem"
           show-time
           v-model:value="dateRange"
-          :placeholder="['editing start time', 'editing end time']"
+          :placeholder="[$t('startTime'), $t('endTime')]"
           format="YYYY/MM/DD HH:mm:ss"
           :presets="rangePresets"
           @change="onRangeChange"
         />
       </a-form-item>
-      <a-form-item label="Name" name="name">
+      <a-form-item :label="$t('name')" name="name">
         <a-input
           v-model:value="searchParamRef.name"
-          placeholder="Please input picture name"
+          :placeholder="$t('inputPictureName')"
           allow-clear
         />
       </a-form-item>
-      <a-form-item label="Introduction" name="introduction">
+      <a-form-item :label="$t('introduction')" name="introduction">
         <a-input
           v-model:value="searchParamRef.introduction"
-          placeholder="Please input picture introduction"
+          :placeholder="$t('inputPictureIntroduction')"
           allow-clear
         />
       </a-form-item>
-      <a-form-item label="Width" name="picWidth">
+      <a-form-item :label="$t('width')" name="picWidth">
         <a-input-number v-model:value="searchParamRef.picWidth" />
       </a-form-item>
-      <a-form-item label="Heigh" name="picHeight">
+      <a-form-item :label="$t('height')" name="picHeight">
         <a-input-number v-model:value="searchParamRef.picHeight" />
       </a-form-item>
       <a-form-item>
         <a-space>
-          <a-button type="primary" html-type="submit">Search</a-button>
-          <a-button html-type="reset" @click="doClear">Reset</a-button>
+          <a-button type="primary" html-type="submit">{{ $t('search') }}</a-button>
+          <a-button html-type="reset" @click="doClear">{{ $t('reset') }}</a-button>
         </a-space>
       </a-form-item>
     </a-form>
@@ -140,6 +140,11 @@ const getTagCategoryOptions = async () => {
  * @param dateStrings
  */
 const onRangeChange = (dates: Dayjs[]) => {
+  if (!dates) {
+    dateRange.value = []
+    return
+  }
+
   if (dates.length < 2) {
     searchParamRef.startEditTime = undefined
     searchParamRef.endEditTime = undefined

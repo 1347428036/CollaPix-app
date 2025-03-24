@@ -26,32 +26,40 @@ import { SPACE_TYPE_ENUM } from '@/constant/spaceConstant'
 import type { SpaceUserVo } from '@/api/api'
 import { spaceUserController } from '@/api/apiFactory'
 import { message } from 'ant-design-vue'
+import { useI18n } from 'vue-i18n'
 
 const loginUserStore = useLoginUserStore()
+const { t } = useI18n()
 // Menu list
 const fixedMenuItems = [
   {
     key: '/',
-    label: 'Public Space',
+    label: 'publicSpace',
     icon: () => h(PictureOutlined),
   },
   {
     key: '/space/my',
-    label: 'My Space',
+    label: 'mySpace',
     icon: () => h(UserOutlined),
   },
   {
     key: '/space/add?type=' + SPACE_TYPE_ENUM.TEAM,
-    label: 'Create Team Space',
+    label: 'createTeamSpace',
     icon: () => h(TeamOutlined),
   },
 ]
 
 const teamSpaceList = ref<SpaceUserVo[]>([])
 const menuItems = computed(() => {
+  const newMenu = fixedMenuItems.map((item) => {
+    return {
+      ...item,
+      label: t(item.label),
+    }
+  })
   // No team spaces, only show fixed menu
   if (teamSpaceList.value.length < 1) {
-    return fixedMenuItems
+    return newMenu
   }
   // Display team space group
   const teamSpaceSubMenus = teamSpaceList.value.map((spaceUser) => {
@@ -63,11 +71,11 @@ const menuItems = computed(() => {
   })
   const teamSpaceMenuGroup = {
     type: 'group',
-    label: 'My Team',
+    label: t('myTeam'),
     key: 'teamSpace',
     children: teamSpaceSubMenus,
   }
-  return [...fixedMenuItems, teamSpaceMenuGroup]
+  return [...newMenu, teamSpaceMenuGroup]
 })
 
 const router = useRouter()
@@ -106,7 +114,7 @@ const fetchTeamSpaceList = async () => {
  */
 watchEffect(() => {
   // Load when logged in
-  if (loginUserStore.getLoginUser().id) {
+  if (loginUserStore.isLogin()) {
     fetchTeamSpaceList()
   }
 })

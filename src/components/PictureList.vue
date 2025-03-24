@@ -40,7 +40,7 @@
         </a-list-item>
       </template>
     </a-list>
-    <ShareModal ref="shareModalRef" :link="shareLink" title="Share Picture" />
+    <ShareModal ref="shareModalRef" :link="shareLink" :title="$t('sharePicture')" />
   </div>
 </template>
 

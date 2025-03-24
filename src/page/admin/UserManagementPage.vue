@@ -7,16 +7,16 @@
       autocomplete="off"
       @finish="doSearch"
     >
-      <a-form-item label="User Account" name="userAccount">
+      <a-form-item :label="$t('userAccount')" name="userAccount">
         <a-input v-model:value="searchParamRef.userAccount" allow-clear> </a-input>
       </a-form-item>
-
-      <a-form-item label="User Name" name="userName">
+      <a-form-item :label="$t('userManagementPage.userName')" name="userName">
         <a-input v-model:value="searchParamRef.userName" allow-clear> </a-input>
       </a-form-item>
-
       <a-form-item>
-        <a-button :disabled="disabled" type="primary" html-type="submit">Search</a-button>
+        <a-button :disabled="disabled" type="primary" html-type="submit">{{
+          $t('searchButton')
+        }}</a-button>
       </a-form-item>
     </a-form>
     <div style="height: 2rem"></div>
@@ -37,7 +37,7 @@
           {{ dayjs(record.createTime).format('YYYY-MM-DD HH:mm:ss') }}
         </template>
         <template v-else-if="column.key === 'action'">
-          <a-button danger @click="doDelete(record.id)">Delete</a-button>
+          <a-button danger @click="doDelete(record.id)">{{ $t('deleteButton') }}</a-button>
         </template>
       </template>
     </a-table>
@@ -49,45 +49,48 @@ import { userController } from '@/api/apiFactory'
 import { computed, onMounted, reactive, ref } from 'vue'
 import dayjs from 'dayjs'
 import { message } from 'ant-design-vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const columns = [
   {
-    title: 'User ID',
+    title: 'ID',
     dataIndex: 'id',
     key: 'id',
   },
   {
-    title: 'Account',
+    title: t('userAccount'),
     dataIndex: 'userAccount',
     key: 'userAccount',
   },
   {
-    title: 'User Name',
+    title: t('userManagementPage.userName'),
     dataIndex: 'userName',
     key: 'userName',
   },
   {
-    title: 'Avatar',
+    title: t('userManagementPage.userAvatar'),
     key: 'userAvatar',
     dataIndex: 'userAvatar',
   },
   {
-    title: 'Profile',
+    title: t('userManagementPage.userProfile'),
     key: 'userProfile',
     dataIndex: 'userProfile',
   },
   {
-    title: 'Role',
+    title: t('userManagementPage.userRole'),
     key: 'userRole',
     dataIndex: 'userRole',
   },
   {
-    title: 'Create Time',
+    title: t('createTime'),
     key: 'createTime',
     dataIndex: 'createTime',
   },
   {
-    title: 'Action',
+    title: t('action'),
     key: 'action',
   },
 ]
@@ -109,7 +112,7 @@ const pagination = computed(() => {
     total: totalRef.value,
     showSizeChanger: true,
     showQuickJumper: true,
-    showTotal: (total: number) => `Total ${total} items`,
+    showTotal: (total: number) => t('total') + `: ${total}`,
     onChange: (page: number, pageSize: number) => {
       searchParamRef.current = page
       searchParamRef.pageSize = pageSize
@@ -134,7 +137,7 @@ const doSearch = () => {
 
 const doDelete = async (id: string) => {
   await userController.deleteUser({ id: id })
-  message.success('Delete Success')
+  message.success(t('deleteSuccess'))
   fetchUserList()
 }
 

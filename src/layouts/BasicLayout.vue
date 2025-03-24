@@ -20,6 +20,8 @@
 import GlobalHeader from '@/components/GlobalHeader.vue'
 import GlobalSlider from '@/components/GlobalSider.vue'
 import { RouterView } from 'vue-router'
+
+
 </script>
 
 <style scoped>

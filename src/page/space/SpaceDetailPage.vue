@@ -13,7 +13,7 @@
           :icon="h(TeamOutlined)"
           @click="openSpaceUserManagementModal"
         >
-          Member management
+          {{ $t('memberManagement') }}
         </a-button>
         <a-button
           v-if="canUploadPicture"
@@ -21,7 +21,7 @@
           :href="`/picture/add?spaceId=${id}`"
           target="_blank"
         >
-          + Create picture
+          {{ $t('createPictureButton') }}
         </a-button>
         <a-button
           type="primary"
@@ -30,11 +30,11 @@
           :href="`/analyze/space?spaceId=${id}`"
           target="_blank"
         >
-          Space analyze
+          {{ $t('spaceAnalyze') }}
         </a-button>
 
         <a-button v-if="canEditPicture" :icon="h(EditOutlined)" @click="doBatchEdit">
-          Batch edit</a-button
+          {{ $t('batchEdit') }}</a-button
         >
         <a-tooltip :title="usedSpaceTooltip" placement="left">
           <a-progress type="circle" :percent="caclUsedSpaceSizePercent()" :size="42" />
@@ -43,7 +43,7 @@
     </a-flex>
     <div style="height: 1rem"></div>
     <PictureSearchForm :onSearch="onSearch" />
-    <a-form-item label="Search by dominant color" style="margin-top: 1rem">
+    <a-form-item :label="$t('searchByDomaintColor')" style="margin-top: 1rem">
       <color-picker format="hex" @pureColorChange="onColorChange" />
     </a-form-item>
 
@@ -61,7 +61,7 @@
       v-model:current="searchParams.current"
       v-model:pageSize="searchParams.pageSize"
       :total="total"
-      :show-total="() => `Total amount ${total} / ${space.maxCount}`"
+      :show-total="() => $t('totalAmount') + `: ${total} / ${space.maxCount}`"
       @change="onPageChange"
     />
     <BatchEditModal
@@ -73,8 +73,8 @@
 
     <!-- Space User Management Modal -->
     <a-modal
-      v-model:visible="isSpaceUserManagementModalVisible"
-      title="Member Management"
+      v-model:open="isSpaceUserManagementModalVisible"
+      :title="$t('memberManagement')"
       width="80%"
       :footer="null"
       @cancel="closeSpaceUserManagementModal"
@@ -129,14 +129,12 @@ onMounted(() => {
   fetchPictureData()
 })
 
-// 通用权限检查函数
 function createPermissionChecker(permission: string) {
   return computed(() => {
     return (space.value.permissions ?? []).includes(permission)
   })
 }
 
-// 定义权限检查
 const canManageSpaceUser = createPermissionChecker(SPACE_PERMISSION_ENUM.SPACE_USER_MANAGE)
 const canUploadPicture = createPermissionChecker(SPACE_PERMISSION_ENUM.PICTURE_UPLOAD)
 const canEditPicture = createPermissionChecker(SPACE_PERMISSION_ENUM.PICTURE_EDIT)

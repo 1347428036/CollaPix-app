@@ -1,26 +1,26 @@
 <template>
   <div id="add-picture-page">
-    <h2 style="margin-bottom: 1rem">{{ route.query?.id ? 'Update Picture' : 'Create Picture' }}</h2>
+    <h2 style="margin-bottom: 1rem">{{ route.query?.id ? $t('updatePicture') : $t('createPicture') }}</h2>
     <a-typography-paragraph v-if="spaceId && spaceId !== PUBLIC_SPACE_ID" type="secondary">
-      Save to space<a :href="`/space/${spaceId}`" target="_blank">{{ spaceId }}</a>
+      {{ $t('saveToSpace') }}<a :href="`/space/${spaceId}`" target="_blank">{{ spaceId }}</a>
     </a-typography-paragraph>
 
     <!-- Choose upload type -->
     <a-tabs v-model:activeKey="uploadType"
       >>
-      <a-tab-pane key="file" tab="File upload">
+      <a-tab-pane key="file" :tab="$t('fileUpload')">
         <PictureUpload :picture="picture" :spaceId="spaceId" :onSuccess="onSuccess" />
       </a-tab-pane>
-      <a-tab-pane key="url" tab="URL upload" force-render>
+      <a-tab-pane key="url" :tab="$t('urlUpload')" force-render>
         <UrlPictureUpload :picture="picture" :spaceId="spaceId" :onSuccess="onSuccess" />
       </a-tab-pane>
     </a-tabs>
     <!-- Picture editing -->
     <div v-if="picture.id" class="edit-bar">
       <a-space>
-        <a-button :icon="h(EditOutlined)" @click="doEditPicture">Edit picture</a-button>
+        <a-button :icon="h(EditOutlined)" @click="doEditPicture">{{ $t('editPicture') }}</a-button>
         <a-button type="primary" ghost :icon="h(FullscreenOutlined)" @click="doImageOutPainting"
-          >AI Out-Painting</a-button
+          >{{ $t('aiOutPainting') }}</a-button
         >
       </a-space>
       <ImageCropper
@@ -40,38 +40,38 @@
     </div>
 
     <a-form v-if="picture.id" layout="vertical" :model="pictureForm" @finish="handleSubmit">
-      <a-form-item label="Name" name="name">
-        <a-input v-model:value="pictureForm.name" placeholder="Please input name" />
+      <a-form-item :label="$t('name')" name="name">
+        <a-input v-model:value="pictureForm.name" :placeholder="$t('inputPictureName')" />
       </a-form-item>
-      <a-form-item label="Introduction" name="introduction">
+      <a-form-item :label="$t('introduction')" name="introduction">
         <a-textarea
           v-model:value="pictureForm.introduction"
-          placeholder="Please input introduction"
+          :placeholder="$t('inputPictureIntroduction')"
           :rows="2"
           :autoSize="{ minRows: 2, maxRows: 5 }"
           allowClear
         />
       </a-form-item>
-      <a-form-item label="Category" name="category">
+      <a-form-item :label="$t('category')" name="category">
         <a-auto-complete
           v-model:value="pictureForm.category"
-          placeholder="Please input category"
+          :placeholder="$t('inputCategoryName')"
           :options="categoryOptions"
           allowClear
         />
       </a-form-item>
-      <a-form-item label="Tag" name="tags">
+      <a-form-item :label="$t('tag')" name="tags">
         <a-select
           v-model:value="pictureForm.tags"
           mode="tags"
           :options="tagOptions"
-          placeholder="Please input tag"
+          :placeholder="$t('inputTags')"
           allowClear
         />
       </a-form-item>
       <a-form-item>
         <a-button type="primary" html-type="submit" style="width: 100%">{{
-          route.query?.id ? 'Update' : 'Create'
+          route.query?.id ? $t('update') : $t('create')
         }}</a-button>
       </a-form-item>
     </a-form>
@@ -116,9 +116,7 @@ const tagOptions = ref<{ value: string; label: string }[]>([
 ])
 const space = ref<SpaceVo>()
 
-// 获取空间信息
 const fetchSpace = async () => {
-  // 获取数据
   if (spaceId.value) {
     const res = await spaceController.getSpaceVoById(spaceId.value)
     if (res) {
