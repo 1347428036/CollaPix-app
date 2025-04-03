@@ -32,7 +32,7 @@
     </a-row>
 
     <!-- 3. Data Display -->
-    <a-statistic-group class="stats-section">
+    <div class="stats-section">
       <a-statistic
         title="Served Enterprises"
         :value="32000"
@@ -54,7 +54,7 @@
         suffix="%"
         class="stats-item"
       />
-    </a-statistic-group>
+    </div>
 
     <!-- 4. Partners -->
     <a-divider orientation="left">Technical Partners</a-divider>

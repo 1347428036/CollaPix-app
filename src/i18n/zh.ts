@@ -184,4 +184,17 @@ export default {
     allSpaces: '所有空间',
     publicGallery: '公共图库',
   },
+  imageCropper: {
+    editImage: '编辑图片',
+    enterEdit: '进入编辑',
+    isEditing: '正在编辑',
+    exitEdit: '退出编辑',
+    rotateLeft: '向左旋转',
+    rotateRight: '向右旋转',
+    zoomIn: '放大',
+    zoomOut: '缩小',
+    confirm: '确认',
+    imageUploadSuccessful: '图片上传成功',
+    imageUploadFailed: '图片上传失败',
+  },
 }

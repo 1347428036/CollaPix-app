@@ -3,7 +3,7 @@
     <a-modal
       class="image-cropper"
       v-model:open="open"
-      title="Edit Image"
+      :title="$t('imageCropper.editImage')"
       :footer="false"
       width="50rem"
       @cancel="closeModal"
@@ -22,23 +22,23 @@
       <!-- Collaborative editing operations -->
       <div class="image-edit-actions" v-if="isTeamSpace">
         <a-space>
-          <a-button v-if="editingUser" disabled> {{ editingUser.userName }} is editing</a-button>
+          <a-button v-if="editingUser" disabled> {{ editingUser.userName }} {{ $t('imageCropper.isEditing') }}</a-button>
           <a-button v-if="canEnterEdit" type="primary" ghost @click="enterEdit"
-            >Enter Edit</a-button
+            >{{ $t('imageCropper.enterEdit') }}</a-button
           >
-          <a-button v-if="canExitEdit" danger ghost @click="exitEdit">Exit Edit</a-button>
+          <a-button v-if="canExitEdit" danger ghost @click="exitEdit">{{ $t('imageCropper.exitEdit') }}</a-button>
         </a-space>
       </div>
       <div style="margin-bottom: 1rem"></div>
       <!-- Image operations -->
       <div class="image-cropper-actions">
         <a-space wrap>
-          <a-button @click="rotateLeft" :disabled="!canEdit">Rotate Left</a-button>
-          <a-button @click="rotateRight" :disabled="!canEdit">Rotate Right</a-button>
-          <a-button @click="changeScale(1)" :disabled="!canEdit">Zoom In</a-button>
-          <a-button @click="changeScale(-1)" :disabled="!canEdit">Zoom Out</a-button>
+          <a-button @click="rotateLeft" :disabled="!canEdit">{{ $t('imageCropper.rotateLeft') }}</a-button>
+          <a-button @click="rotateRight" :disabled="!canEdit">{{ $t('imageCropper.rotateRight') }}</a-button>
+          <a-button @click="changeScale(1)" :disabled="!canEdit">{{ $t('imageCropper.zoomIn') }}</a-button>
+          <a-button @click="changeScale(-1)" :disabled="!canEdit">{{ $t('imageCropper.zoomOut') }}</a-button>
           <a-button type="primary" :loading="loading" @click="handleConfirm" :disabled="!canEdit">
-            Confirm
+            {{ $t('imageCropper.confirm') }}
           </a-button>
         </a-space>
       </div>
@@ -58,6 +58,7 @@ import { useLoginUserStore } from '@/stores/useLoginUserStore'
 import PictureEditWebSocket from '@/util'
 import { message } from 'ant-design-vue'
 import { computed, onUnmounted, ref, watchEffect } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 interface Props {
   imageUrl?: string
@@ -66,8 +67,8 @@ interface Props {
   space?: SpaceVo
   onSuccess?: (picture: PictureVo) => void
 }
-
 const props = defineProps<Props>()
+const { t } = useI18n()
 
 // Editor component reference
 const cropperRef = ref()
@@ -258,16 +259,16 @@ const handleUpload = async (file: File) => {
       props.spaceId,
     )) as PictureVo
     if (res) {
-      message.success('Image upload successful')
+      message.success(t('imageCropper.imageUploadSuccessful'))
       // Pass the uploaded image information to the parent component
       props.onSuccess?.(res)
       closeModal()
     } else {
-      message.error('Image upload failed')
+      message.error(t('imageCropper.imageUploadFailed'))
     }
   } catch (error) {
     console.error('Image upload failed:', error)
-    message.error('Image upload failed')
+    message.error(t('imageCropper.imageUploadFailed'))
   } finally {
     loading.value = false
   }
