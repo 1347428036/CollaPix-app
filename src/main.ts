@@ -8,9 +8,10 @@ import '@/access.ts'
 import VueCropper from 'vue-cropper'
 import 'vue-cropper/dist/index.css'
 import { createI18n } from 'vue-i18n'
-import zh from '@/i18n/zh'
-import en from '@/i18n/en'
+import zh from '@/i18n/zh.ts'
+import en from '@/i18n/en.ts'
 
+// lazy loading example: https://vue-i18n.intlify.dev/guide/advanced/lazy.html
 const i18n = createI18n({
   locale: 'en',
   legacy: false,
