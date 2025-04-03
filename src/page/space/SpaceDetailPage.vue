@@ -37,7 +37,7 @@
           {{ $t('batchEdit') }}</a-button
         >
         <a-tooltip :title="usedSpaceTooltip" placement="left">
-          <a-progress type="circle" :percent="caclUsedSpaceSizePercent()" :size="42" />
+          <a-progress type="circle" :percent="spaceUsagePercent" :size="42" />
         </a-tooltip>
       </a-space>
     </a-flex>
@@ -114,6 +114,13 @@ const usedSpaceTooltip = computed(() => {
 
   return 'Unknown'
 })
+const spaceUsagePercent = computed(() => {
+  if (space.value.totalSize && space.value.maxSize) {
+    return Number(((space.value.totalSize * 100) / space.value.maxSize).toFixed(1))
+  }
+
+  return 0.0
+})
 
 // Search parameters
 const searchParams = ref<PictureQueryRequest>({
@@ -186,14 +193,6 @@ const fetchSpaceDetail = async () => {
   } catch (e: unknown) {
     message.error('Failed to load page details' + e)
   }
-}
-
-const caclUsedSpaceSizePercent = () => {
-  if (space.value.totalSize && space.value.maxSize) {
-    return ((space.value.totalSize * 100) / space.value.maxSize).toFixed(1)
-  }
-
-  return 0
 }
 
 const onColorChange = async (color: string) => {
