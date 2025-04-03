@@ -1,19 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomePageVue from '@/page/HomePage.vue'
-import UserLoginPageVue from '@/page/user/UserLoginPage.vue'
-import UserRegisterPageVue from '@/page/user/UserRegisterPage.vue'
-import UserManagementPageVue from '@/page/admin/UserManagementPage.vue'
 import AddPicturePage from '@/page/picture/AddPicturePage.vue'
-import PictureManagementPage from '@/page/admin/PictureManagementPage.vue'
 import PictureDetailPage from '@/page/picture/PictureDetailPage.vue'
-import AddPictureBatchPage from '@/page/picture/AddPictureBatchPage.vue'
-import SpaceManagementPage from '@/page/admin/SpaceManagementPage.vue'
 import AddSpacePage from '@/page/space/AddSpacePage.vue'
 import MySpacePage from '@/page/space/MySpacePage.vue'
 import SpaceDetailPage from '@/page/space/SpaceDetailPage.vue'
 import SearchPicturePage from '@/page/picture/SearchPicturePage.vue'
-import SpaceAnalyzePage from '@/page/space/SpaceAnalyzePage.vue'
-import SpaceUserManagementPage from '@/page/admin/SpaceUserManagementPage.vue'
 import UserSettingsPage from '@/page/user/UserSettingsPage.vue'
 
 const router = createRouter({
@@ -27,27 +19,27 @@ const router = createRouter({
     {
       path: '/user/login',
       name: 'user login',
-      component: UserLoginPageVue,
+      component: () => import('@/page/user/UserLoginPage.vue'),
     },
     {
       path: '/user/register',
       name: 'user register',
-      component: UserRegisterPageVue,
+      component: () => import('@/page/user/UserRegisterPage.vue'),
     },
     {
       path: '/admin/user-management',
       name: 'user management',
-      component: UserManagementPageVue,
+      component: () => import('@/page/admin/UserManagementPage.vue'),
     },
     {
       path: '/admin/picture-management',
       name: 'picture management',
-      component: PictureManagementPage,
+      component: () => import('@/page/admin/PictureManagementPage.vue'),
     },
     {
       path: '/admin/space-management',
       name: 'space management',
-      component: SpaceManagementPage,
+      component: () => import('@/page/admin/SpaceManagementPage.vue'),
     },
     {
       path: '/picture/add',
@@ -57,7 +49,7 @@ const router = createRouter({
     {
       path: '/picture/add/batch',
       name: 'Create Picture Batch',
-      component: AddPictureBatchPage,
+      component: () => import('@/page/picture/AddPictureBatchPage.vue'),
     },
     {
       path: '/picture/:id',
@@ -84,7 +76,7 @@ const router = createRouter({
     {
       path: '/analyze/space',
       name: 'Space Analyze',
-      component: SpaceAnalyzePage,
+      component: () => import('@/page/space/SpaceAnalyzePage.vue'),
     },
     {
       path: '/search/picture',
@@ -94,7 +86,7 @@ const router = createRouter({
     {
       path: '/space/user/management/:spaceId',
       name: 'Space user management',
-      component: SpaceUserManagementPage,
+      component: () => import('@/page/admin/SpaceUserManagementPage.vue'),
       props: true,
     },
     {
