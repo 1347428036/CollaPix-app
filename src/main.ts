@@ -15,6 +15,7 @@ import en from '@/i18n/en.ts'
 const i18n = createI18n({
   locale: 'en',
   legacy: false,
+  fallbackLocale: 'en',
   messages: {
     zh,
     en
