@@ -184,4 +184,17 @@ export default {
     copyLink: 'Copy share link',
     scanQRCode: 'Scan QR code to view on mobile',
   },
+  imageCropper: {
+    editImage: 'Edit Image',
+    enterEdit: 'Enter Edit',
+    isEditing: 'is editing',
+    exitEdit: 'Exit Edit',
+    rotateLeft: 'Rotate Left',
+    rotateRight: 'Rotate Right',
+    zoomIn: 'Zoom In',
+    zoomOut: 'Zoom Out',
+    confirm: 'Confirm',
+    imageUploadSuccessful: 'Image upload successful',
+    imageUploadFailed: 'Image upload failed',
+  },
 }
