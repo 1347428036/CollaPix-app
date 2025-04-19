@@ -6,11 +6,11 @@
       >
       <!-- Form items -->
       <a-form layout="vertical" :model="formData" @finish="handleSubmit">
-        <a-form-item :label="$t('tagLabel')" name="category">
+        <a-form-item :label="$t('category')" name="category">
           <a-auto-complete
             v-model:value="formData.category"
             :options="categoryOptions"
-            :placeholder="$t('tagPlaceholder')"
+            :placeholder="$t('inputCategoryName')"
             allowClear
           />
         </a-form-item>
@@ -19,7 +19,7 @@
             v-model:value="formData.tags"
             :options="tagOptions"
             mode="tags"
-            :placeholder="$t('tagPlaceholder')"
+            :placeholder="$t('inputTags')"
             allowClear
           />
         </a-form-item>
@@ -38,7 +38,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, ref, withDefaults, defineExpose, reactive, onMounted } from 'vue'
+import { ref, reactive, onMounted } from 'vue'
 import { message } from 'ant-design-vue'
 import type { PictureTagCategory, PictureVo } from '@/api/api.ts'
 import { pictureController } from '@/api/apiFactory'
