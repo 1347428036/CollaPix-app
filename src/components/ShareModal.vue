@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, ref, withDefaults, defineExpose } from 'vue'
+import { ref} from 'vue'
 
 /**
  * Define component props types
@@ -23,7 +23,7 @@ interface Props {
 /**
  * Assign default values to component props
  */
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   title: () => 'Share',
   link: () => 'https://collapix.esmiao.com',
 })
