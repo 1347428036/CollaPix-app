@@ -68,7 +68,7 @@ const fetchData = async () => {
     queryAll: props.queryAll,
     queryPublic: props.queryPublic,
     spaceId: props.spaceId,
-  })
+  }) as unknown as SpaceTagAnalyzeResponse[]
   if (res) {
     dataList.value = res ?? []
   } else {
